@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://brxqcp68keyih"]
+
+[ext_resource type="Texture2D" uid="uid://dhh6u4od15re3" path="res://Level2.png" id="1_jp1k7"]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Level2" type="Sprite2D" parent="."]
+position = Vector2(572.333, 329)
+scale = Vector2(0.706667, 0.706667)
+texture = ExtResource("1_jp1k7")

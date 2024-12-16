@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://lf2cocjid6x"]
+
+[ext_resource type="Texture2D" uid="uid://dhh6u4od15re3" path="res://Level2.png" id="1_yd20d"]
+[ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="2_jf5o5"]
+
+[sub_resource type="GDScript" id="GDScript_dodv8"]
+script/source = "extends Node2D
+
+# References to PathFollow2D and LineEdit
+@onready var path_follow = $Path2D/PathFollow2D
+@onready var line_edit = $LineEdit
+
+func _ready():
+	# Connect the text_submitted signal from LineEdit using Callable
+	line_edit.text_submitted.connect(_on_line_edit_text_submitted)
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	# Validate input
+	if not new_text.is_valid_float():
+		print(\"Invalid input. Please enter a number between 0 and 1.\")
+		return
+
+	# Clamp input to range [0, 1]
+	var percentage = clamp(float(new_text), 0, 1)
+
+	# Update PathFollow2D's progress_ratio
+	path_follow.progress_ratio = percentage  # Use percentage directly for normalized offset
+"
+
+[sub_resource type="Curve2D" id="Curve2D_6j2cg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -531.941, 232.71, 0, 0, 0, 0, -352.104, 235.225, 0, 0, 0, 0, -220.992, 236.01, 0, 0, 0, 0, -75.0524, 233.653, 0, 0, 0, 0, 82.5937, 236.01, 0, 0, 0, 0, 266.774, 237.582, 0, 0, 0, 0, 370.571, 238.367, 0, 0, 0, 0, 474.848, 236.916, 0, 0, 0, 0, 468.905, 113.446, 0, 0, 0, 0, 470.67, 74.2991, 0, 0, 0, 0, 469.685, -79.8284, 0, 0, 0, 0, 474.848, -238.318, 0, 0, 0, 0, 526.371, -234.112)
+}
+point_count = 13
+
+[node name="Level2" type="Sprite2D"]
+position = Vector2(703, 419)
+scale = Vector2(0.718125, 0.713333)
+texture = ExtResource("1_yd20d")
+script = SubResource("GDScript_dodv8")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6j2cg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-531.941, 232.71)
+rotation = 0.013984
+
+[node name="Mus" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(1.52032, -40.6793)
+rotation = -0.013984
+scale = Vector2(0.450156, 0.450156)
+texture = ExtResource("2_jf5o5")
+
+[node name="LineEdit" type="LineEdit" parent="Path2D/PathFollow2D"]
+offset_left = -340.533
+offset_top = -235.558
+offset_right = -273.471
+offset_bottom = -204.558
+placeholder_text = "Enter a number between 0 and 1:"
+
+[connection signal="text_submitted" from="Path2D/PathFollow2D/LineEdit" to="." method="_on_line_edit_text_submitted"]

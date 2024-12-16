@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://4a2jxcsbpc4e"]
+
+[ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
+[ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="1_w780e"]
+[ext_resource type="Script" path="res://scripts/path_follow_2d.gd" id="3_m2uhg"]
+[ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="4_fjnxe"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
+distance = -504.0
+
+[sub_resource type="Curve2D" id="Curve2D_7g2jg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 15, 497, 0, 0, 0, 0, 920, 496, 0, 0, 0, 0, 922, 2)
+}
+point_count = 3
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(572, 325)
+
+[node name="TestLevel" parent="." instance=ExtResource("1_w780e")]
+position = Vector2(-10, -11)
+scale = Vector2(1.025, 1.025)
+
+[node name="Player" parent="TestLevel" instance=ExtResource("1_r8jgq")]
+visible = false
+position = Vector2(268, 450)
+scale = Vector2(0.33, 0.33)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_tx2w5")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7g2jg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(500.175, 496.464)
+rotation = -0.00110497
+progress = 485.175
+script = ExtResource("3_m2uhg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-350, -151.115)
+rotation = 0.00110497
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_fjnxe")
+centered = false
+offset = Vector2(50, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Path2D"]
+
+[node name="LineEdit" type="LineEdit" parent="Path2D/CanvasLayer"]
+offset_left = 438.0
+offset_top = 159.0
+offset_right = 694.0
+offset_bottom = 249.0
+placeholder_text = "Enter a number 0-9:"
+
+[node name="Label" type="Label" parent="Path2D/CanvasLayer"]
+visible = false
+offset_left = 532.0
+offset_top = 57.0
+offset_right = 594.0
+offset_bottom = 80.0
+text = "Correct!"
