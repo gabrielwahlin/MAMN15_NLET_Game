@@ -57,7 +57,7 @@ offset_left = 438.0
 offset_top = 159.0
 offset_right = 694.0
 offset_bottom = 249.0
-placeholder_text = "Enter a number 0-9:"
+placeholder_text = "hej"
 
 [node name="Label" type="Label" parent="Path2D/CanvasLayer"]
 visible = false
