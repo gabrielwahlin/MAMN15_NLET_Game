@@ -36,7 +36,7 @@ func _on_text_submitted(text: String) -> void:
 func _process(delta: float) -> void:
 	# Smoothly update progress_ratio and round it to 3 decimal places
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, smooth_speed * delta), 3)
-	#print(progress_ratio)
+	print(progress_ratio)
 
 	if progress_ratio == 0.8:
 		display_win_message()
