@@ -69,10 +69,10 @@ offset_bottom = 80.0
 text = "Correct!"
 
 [node name="StartPointer" parent="." instance=ExtResource("5_qor7s")]
-position = Vector2(55, 435)
+position = Vector2(120, 433)
 scale = Vector2(3, 3)
 
 [node name="Node2D" parent="." instance=ExtResource("5_qor7s")]
-position = Vector2(1024, 153)
+position = Vector2(1024, 157)
 rotation = 1.5708
 scale = Vector2(3, 3)
