@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=8 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
 [ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="1_w780e"]
 [ext_resource type="Script" path="res://scripts/path_follow_2d.gd" id="3_m2uhg"]
 [ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="4_fjnxe"]
+[ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="5_qor7s"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
 distance = -504.0
@@ -57,7 +58,7 @@ offset_left = 438.0
 offset_top = 159.0
 offset_right = 694.0
 offset_bottom = 249.0
-placeholder_text = "hej"
+placeholder_text = "Enter a number 0-9:"
 
 [node name="Label" type="Label" parent="Path2D/CanvasLayer"]
 visible = false
@@ -66,3 +67,12 @@ offset_top = 57.0
 offset_right = 594.0
 offset_bottom = 80.0
 text = "Correct!"
+
+[node name="StartPointer" parent="." instance=ExtResource("5_qor7s")]
+position = Vector2(55, 435)
+scale = Vector2(3, 3)
+
+[node name="Node2D" parent="." instance=ExtResource("5_qor7s")]
+position = Vector2(1024, 153)
+rotation = 1.5708
+scale = Vector2(3, 3)
