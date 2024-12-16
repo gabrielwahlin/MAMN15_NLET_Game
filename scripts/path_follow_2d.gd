@@ -4,7 +4,10 @@ extends PathFollow2D
 @onready var win_label = $"../CanvasLayer/Label"    # Adjust the path to the Label node
 
 var target_ratio: float = 0.0
+#var progress_ratio: float = 0.0  # Initialize progress_ratio
 var smooth_speed: float = 2.0
+var rng = RandomNumberGenerator.new()
+var targetnumber: float = 0.0  # Declare targetnumber as a member variable
 
 # Helper function to round a number to a specified number of decimal places
 func round_to(value: float, decimals: int) -> float:
@@ -12,6 +15,10 @@ func round_to(value: float, decimals: int) -> float:
 	return round(value * factor) / factor
 
 func _ready():
+	# Generate a random target number between 0.1 and 0.9
+	targetnumber = round_to(rng.randf_range(0.1, 0.9), 3)
+	print("Target number is:", targetnumber)
+	
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:
@@ -24,7 +31,7 @@ func _on_text_submitted(text: String) -> void:
 	if text.is_valid_float():
 		var input_number = int(text)
 		if input_number >= 0 and input_number <= 9:
-			target_ratio = input_number / 10.0
+			target_ratio = round_to(input_number / 10.0, 3)
 			print("New target progress_ratio:", target_ratio)
 		else:
 			print("Invalid input: Enter a number between 0 and 9.")
@@ -36,10 +43,17 @@ func _on_text_submitted(text: String) -> void:
 func _process(delta: float) -> void:
 	# Smoothly update progress_ratio and round it to 3 decimal places
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, smooth_speed * delta), 3)
-	print(progress_ratio)
+	print("Progress ratio:", progress_ratio)
 
-	if progress_ratio == 0.8:
+	# Check if progress_ratio is close enough to targetnumber
+	if abs(progress_ratio - targetnumber) < 0.07:
 		display_win_message()
+	if abs(progress_ratio - targetnumber) > 0.07:
+		display_win_message_oob()
 
 func display_win_message():
 	win_label.visible = true
+	#print("You matched the target number!")
+	
+func display_win_message_oob():
+	win_label.visible = false
