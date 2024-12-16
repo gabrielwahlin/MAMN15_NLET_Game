@@ -11,7 +11,7 @@ distance = -504.0
 
 [sub_resource type="Curve2D" id="Curve2D_7g2jg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 125, 499, 0, 0, 0, 0, 920, 496, 0, 0, 0, 0, 922, 2)
+"points": PackedVector2Array(0, 0, 0, 0, 15, 497, 0, 0, 0, 0, 920, 496, 0, 0, 0, 0, 922, 2)
 }
 point_count = 3
 
@@ -38,8 +38,9 @@ shape = SubResource("WorldBoundaryShape2D_tx2w5")
 curve = SubResource("Curve2D_7g2jg")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(125, 499)
-rotation = -0.00377357
+position = Vector2(500.175, 496.464)
+rotation = -0.00110497
+progress = 485.175
 script = ExtResource("3_m2uhg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]

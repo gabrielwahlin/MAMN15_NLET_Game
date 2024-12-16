@@ -4,8 +4,7 @@ extends PathFollow2D
 @onready var win_label = $"../CanvasLayer/Label"    # Adjust the path to the Label node
 
 var target_ratio: float = 0.0
-#var progress_ratio: float = 0.0  # Initialize progress_ratio
-var smooth_speed: float = 2.0
+var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
 var targetnumber: float = 0.0  # Declare targetnumber as a member variable
 
@@ -42,13 +41,14 @@ func _on_text_submitted(text: String) -> void:
 
 func _process(delta: float) -> void:
 	# Smoothly update progress_ratio and round it to 3 decimal places
-	progress_ratio = round_to(lerp(progress_ratio, target_ratio, smooth_speed * delta), 3)
+	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
+
 	print("Progress ratio:", progress_ratio)
 
 	# Check if progress_ratio is close enough to targetnumber
 	if abs(progress_ratio - targetnumber) < 0.07:
 		display_win_message()
-	if abs(progress_ratio - targetnumber) > 0.07:
+	else:
 		display_win_message_oob()
 
 func display_win_message():
