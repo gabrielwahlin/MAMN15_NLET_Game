@@ -16,7 +16,7 @@ func round_to(value: float, decimals: int) -> float:
 func _ready():
 	# Generate a random target number between 0.1 and 0.9
 	targetnumber = round_to(rng.randf_range(0.1, 0.9), 3)
-	print("Target number is:", targetnumber)
+	#print("Target number is:", targetnumber)
 	
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	# Smoothly update progress_ratio and round it to 3 decimal places
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
 
-	print("Progress ratio:", progress_ratio)
+	#print("Progress ratio:", progress_ratio)
 
 	# Check if progress_ratio is close enough to targetnumber
 	if abs(progress_ratio - targetnumber) < 0.07:

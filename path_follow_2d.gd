@@ -1,26 +1,31 @@
 extends PathFollow2D
 
-@onready var line_edit = $"../CanvasLayer/LineEdit"  # Adjust the path to the LineEdit node
-@onready var win_label = $"../CanvasLayer/Label"    # Adjust the path to the Label node
+@onready var line_edit = $"../CanvasLayer/LineEdit"
+@onready var win_label = $"../CanvasLayer/Label"
 @onready var start_pointer_hor = $"/root/Game/StartPointerHor"
 @onready var end_pointer_hor = $"/root/Game/EndPointerHor"
 @onready var start_pointer_ver = $"/root/Game/StartPointerVer"
 @onready var end_pointer_ver = $"/root/Game/EndPointerVer"
+@onready var horizontal_path = $"/root/Game/HorizontalPath"  # Reference to HorizontalPath
+@onready var vertical_path = $"/root/Game/HorizontalPath/VerticalPath"      # Reference to VerticalPath
+@onready var hor_path_follow = $"/root/Game/HorizontalPath/HorPathFollow"   # Reference to HorPathFollow
+@onready var ver_path_follow = $"/root/Game/HorizontalPath/VerticalPath/VerPathFollow"   # Reference to VerPathFollow
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
-var targetnumber: float = 0.0  # Declare targetnumber as a member variable
+var targetnumber_hor: float = 0.0
+var sprite: PathFollow2D = null
 
-# Helper function to round a number to a specified number of decimal places
 func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)
 	return round(value * factor) / factor
 
 func _ready():
-	# Generate a random target number between 0.1 and 0.9
-	targetnumber = round_to(rng.randf_range(0.1, 0.9), 3)
-	print("Target number is:", targetnumber)
+	targetnumber_hor = round_to(rng.randf_range(0.1, 0.9), 3)
+	print("Target number is:", targetnumber_hor)
+	
+	sprite = hor_path_follow  # Initially, the sprite follows the horizontal path
 	
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
@@ -45,27 +50,35 @@ func _on_text_submitted(text: String) -> void:
 	line_edit.clear()
 
 func _process(delta: float) -> void:
-	# Smoothly update progress_ratio and round it to 3 decimal places
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
 
-	print("Progress ratio:", progress_ratio)
+	if abs(progress_ratio - targetnumber_hor) < 0.07:
+		correct_hor()
 
-	# Check if progress_ratio is close enough to targetnumber
-	if abs(progress_ratio - targetnumber) < 0.07:
-		display_win_message()
-	else:
-		display_win_message_oob()
+func correct_hor():
+	line_edit.editable = true
 
-func display_win_message():
-	win_label.visible = true
+	# Hide the horizontal pointers
 	start_pointer_hor.visible = false
 	end_pointer_hor.visible = false
+	
+	# Show the vertical pointers
 	start_pointer_ver.visible = true
 	end_pointer_ver.visible = true
 	
-func display_win_message_oob():
-	win_label.visible = false
-	start_pointer_hor.visible = true
-	end_pointer_hor.visible = true
-	start_pointer_ver.visible = false
-	end_pointer_ver.visible = false
+	# Switch the sprite's path from HorizontalPath to VerticalPath
+	if sprite != null:
+		sprite.path = vertical_path  # Assign the new path (VerticalPath) to the sprite
+		sprite.offset = 0.0  # Reset offset to start from the beginning of the vertical path
+		sprite.progress_ratio = 0.0  # Reset progress ratio if needed
+		sprite.visible = true  # Ensure the sprite remains visible
+		
+	# Hide the horizontal path follow node
+	if hor_path_follow != null:
+		hor_path_follow.visible = false
+	
+	# Show the vertical path follow node
+	if ver_path_follow != null:
+		ver_path_follow.visible = true
+		
+	print("Successfully switched from HorizontalPath to VerticalPath")
