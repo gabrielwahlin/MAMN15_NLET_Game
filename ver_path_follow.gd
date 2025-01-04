@@ -51,18 +51,4 @@ func _process(delta: float) -> void:
 		correct_ver()
 
 func correct_ver():
-	line_edit.editable = true
-
-	# Hide vertical pointers and show horizontal pointers
-	start_pointer_ver.visible = false
-	end_pointer_ver.visible = false
-	start_pointer_hor.visible = true
-	end_pointer_hor.visible = true
-
-	# Reparent this PathFollow2D to the HorizontalPath
-	var parent_path = get_parent()
-	if parent_path == vertical_path and horizontal_path != null:
-		parent_path.remove_child(self)
-		horizontal_path.add_child(self)
-		progress_ratio = 0.0  # Reset to the beginning of the new path
-		print("Switched to HorizontalPath!")
+	win_label.visible = true

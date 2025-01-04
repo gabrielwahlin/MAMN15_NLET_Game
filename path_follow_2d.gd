@@ -8,6 +8,7 @@ extends PathFollow2D
 @onready var end_pointer_ver = $"/root/Game/EndPointerVer"
 @onready var horizontal_path = $"/root/Game/HorizontalPath"  # Reference to HorizontalPath
 @onready var vertical_path = $"/root/Game/VerticalPath"      # Reference to VerticalPath
+@onready var line_edit_ver = $"/root/Game/VerticalPath/CanvasLayer2/LineEdit"
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
@@ -20,7 +21,7 @@ func round_to(value: float, decimals: int) -> float:
 
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.1, 0.9), 3)
-	print("Target number is:", targetnumber_hor)
+	print("Target number horizontal is:", targetnumber_hor)
 
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
@@ -51,7 +52,7 @@ func _process(delta: float) -> void:
 		correct_hor()
 
 func correct_hor():
-	line_edit.editable = true
+	#line_edit.editable = true
 
 	# Hide horizontal pointers and show vertical pointers
 	start_pointer_hor.visible = false
@@ -63,6 +64,9 @@ func correct_hor():
 	var parent_path = get_parent()
 	if parent_path == horizontal_path and vertical_path != null:
 		parent_path.remove_child(self)
-		vertical_path.add_child(self)
-		progress_ratio = 0.0  # Reset to the beginning of the new path
+		vertical_path.visible = true
+		line_edit.visible = false
+		line_edit_ver.visible = true
+		#vertical_path.add_child(self)
+		#progress_ratio = 0.0  # Reset to the beginning of the new path
 		print("Switched to VerticalPath!")
