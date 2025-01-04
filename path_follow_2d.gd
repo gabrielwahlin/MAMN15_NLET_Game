@@ -7,15 +7,12 @@ extends PathFollow2D
 @onready var start_pointer_ver = $"/root/Game/StartPointerVer"
 @onready var end_pointer_ver = $"/root/Game/EndPointerVer"
 @onready var horizontal_path = $"/root/Game/HorizontalPath"  # Reference to HorizontalPath
-@onready var vertical_path = $"/root/Game/HorizontalPath/VerticalPath"      # Reference to VerticalPath
-@onready var hor_path_follow = $"/root/Game/HorizontalPath/HorPathFollow"   # Reference to HorPathFollow
-@onready var ver_path_follow = $"/root/Game/HorizontalPath/VerticalPath/VerPathFollow"   # Reference to VerPathFollow
+@onready var vertical_path = $"/root/Game/VerticalPath"      # Reference to VerticalPath
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
 var targetnumber_hor: float = 0.0
-var sprite: PathFollow2D = null
 
 func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)
@@ -24,9 +21,7 @@ func round_to(value: float, decimals: int) -> float:
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.1, 0.9), 3)
 	print("Target number is:", targetnumber_hor)
-	
-	sprite = hor_path_follow  # Initially, the sprite follows the horizontal path
-	
+
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:
@@ -58,27 +53,16 @@ func _process(delta: float) -> void:
 func correct_hor():
 	line_edit.editable = true
 
-	# Hide the horizontal pointers
+	# Hide horizontal pointers and show vertical pointers
 	start_pointer_hor.visible = false
 	end_pointer_hor.visible = false
-	
-	# Show the vertical pointers
 	start_pointer_ver.visible = true
 	end_pointer_ver.visible = true
-	
-	# Switch the sprite's path from HorizontalPath to VerticalPath
-	if sprite != null:
-		sprite.path = vertical_path  # Assign the new path (VerticalPath) to the sprite
-		sprite.offset = 0.0  # Reset offset to start from the beginning of the vertical path
-		sprite.progress_ratio = 0.0  # Reset progress ratio if needed
-		sprite.visible = true  # Ensure the sprite remains visible
-		
-	# Hide the horizontal path follow node
-	if hor_path_follow != null:
-		hor_path_follow.visible = false
-	
-	# Show the vertical path follow node
-	if ver_path_follow != null:
-		ver_path_follow.visible = true
-		
-	print("Successfully switched from HorizontalPath to VerticalPath")
+
+	# Reparent this PathFollow2D to the VerticalPath
+	var parent_path = get_parent()
+	if parent_path == horizontal_path and vertical_path != null:
+		parent_path.remove_child(self)
+		vertical_path.add_child(self)
+		progress_ratio = 0.0  # Reset to the beginning of the new path
+		print("Switched to VerticalPath!")

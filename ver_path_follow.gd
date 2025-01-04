@@ -1,31 +1,27 @@
 extends PathFollow2D
 
-@onready var line_edit = $"../CanvasLayer2/LineEdit"  # Adjust the path to the LineEdit node
-@onready var win_label = $"../CanvasLayer2/Label"    # Adjust the path to the Label node
+@onready var line_edit = $"../CanvasLayer2/LineEdit"
+@onready var win_label = $"../CanvasLayer2/Label"
 @onready var start_pointer_hor = $"/root/Game/StartPointerHor"
 @onready var end_pointer_hor = $"/root/Game/EndPointerHor"
 @onready var start_pointer_ver = $"/root/Game/StartPointerVer"
 @onready var end_pointer_ver = $"/root/Game/EndPointerVer"
-@onready var vertical_path = $"/root/Game/HorizontalPath/VerticalPath"  
+@onready var horizontal_path = $"/root/Game/HorizontalPath"  # Reference to HorizontalPath
+@onready var vertical_path = $"/root/Game/VerticalPath"      # Reference to VerticalPath
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
-var targetnumber_ver: float = 0.0  # Declare targetnumber as a member variable
-var sprite: PathFollow2D = null
+var targetnumber_ver: float = 0.0
 
-# Helper function to round a number to a specified number of decimal places
 func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)
 	return round(value * factor) / factor
 
 func _ready():
-	# Generate a random target number between 0.1 and 0.9
 	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
 	print("Target number vertical is:", targetnumber_ver)
-	
-	sprite = get_parent().get_node("SpritePathFollow")
-	
+
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:
@@ -49,37 +45,24 @@ func _on_text_submitted(text: String) -> void:
 	line_edit.clear()
 
 func _process(delta: float) -> void:
-	# Smoothly update progress_ratio and round it to 3 decimal places
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
 
-	#print("Progress ratio:", progress_ratio)
-
-	# Check if progress_ratio is close enough to targetnumber
 	if abs(progress_ratio - targetnumber_ver) < 0.07:
 		correct_ver()
-	
 
-func correct_ver(): 
-	win_label.visible = true
-	#start_pointer_hor.visible = false
-	#end_pointer_hor.visible = false
-	#start_pointer_ver.visible = true
-	#end_pointer_ver.visible = true
-		# Switch the sprite to follow the new path
-	
-	
+func correct_ver():
+	line_edit.editable = true
 
-
-#func display_win_message():
-#	win_label.visible = true
-#	start_pointer_hor.visible = false
-#	end_pointer_hor.visible = false
-#	start_pointer_ver.visible = true
-#	end_pointer_ver.visible = true
-
-func display_win_message_oob():
-	win_label.visible = false
-	start_pointer_hor.visible = true
-	end_pointer_hor.visible = true
+	# Hide vertical pointers and show horizontal pointers
 	start_pointer_ver.visible = false
 	end_pointer_ver.visible = false
+	start_pointer_hor.visible = true
+	end_pointer_hor.visible = true
+
+	# Reparent this PathFollow2D to the HorizontalPath
+	var parent_path = get_parent()
+	if parent_path == vertical_path and horizontal_path != null:
+		parent_path.remove_child(self)
+		horizontal_path.add_child(self)
+		progress_ratio = 0.0  # Reset to the beginning of the new path
+		print("Switched to HorizontalPath!")

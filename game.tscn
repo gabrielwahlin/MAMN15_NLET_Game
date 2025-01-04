@@ -111,7 +111,6 @@ curve = SubResource("Curve2D_tixmx")
 [node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
 position = Vector2(122, 502)
 rotation = -0.0010661
-scale = Vector2(1, 1)
 script = ExtResource("6_rnyo1")
 
 [node name="Sprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
@@ -140,12 +139,13 @@ offset_right = 594.0
 offset_bottom = 80.0
 text = "Correct!"
 
-[node name="VerticalPath" type="Path2D" parent="HorizontalPath"]
+[node name="VerticalPath" type="Path2D" parent="."]
+visible = false
 curve = SubResource("Curve2D_prc7j")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="HorizontalPath/VerticalPath"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
 
-[node name="LineEdit" type="LineEdit" parent="HorizontalPath/VerticalPath/CanvasLayer2"]
+[node name="LineEdit" type="LineEdit" parent="VerticalPath/CanvasLayer2"]
 visible = false
 offset_left = 438.0
 offset_top = 159.0
@@ -154,21 +154,19 @@ offset_bottom = 249.0
 placeholder_text = "Enter a number 0-9:"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="HorizontalPath/VerticalPath/CanvasLayer2"]
-visible = false
+[node name="Label" type="Label" parent="VerticalPath/CanvasLayer2"]
 offset_left = 532.0
 offset_top = 57.0
 offset_right = 594.0
 offset_bottom = 80.0
 text = "Correct!"
 
-[node name="VerPathFollow" type="PathFollow2D" parent="HorizontalPath/VerticalPath"]
+[node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]
 position = Vector2(921, 497)
 rotation = -1.5708
 script = ExtResource("7_0s5oc")
 
-[node name="Sprite2D" type="Sprite2D" parent="HorizontalPath/VerticalPath/VerPathFollow"]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
 position = Vector2(-350, -151.115)
 rotation = 0.00110497
 scale = Vector2(0.3, 0.3)
