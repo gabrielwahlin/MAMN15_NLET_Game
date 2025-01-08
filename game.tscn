@@ -135,14 +135,13 @@ text = "Restart"
 curve = SubResource("Curve2D_prc7j")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
-visible = false
 
 [node name="LineEdit" type="LineEdit" parent="VerticalPath/CanvasLayer2"]
 visible = false
-offset_left = 438.0
-offset_top = 159.0
-offset_right = 694.0
-offset_bottom = 249.0
+offset_left = 927.0
+offset_top = 399.0
+offset_right = 1183.0
+offset_bottom = 489.0
 placeholder_text = "Enter a number 0-9:"
 metadata/_edit_use_anchors_ = true
 
