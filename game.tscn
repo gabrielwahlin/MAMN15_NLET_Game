@@ -88,10 +88,10 @@ offset = Vector2(50, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="HorizontalPath"]
 
 [node name="LineEdit" type="LineEdit" parent="HorizontalPath/CanvasLayer"]
-offset_left = 827.0
-offset_top = 400.0
-offset_right = 1083.0
-offset_bottom = 490.0
+offset_left = 927.0
+offset_top = 399.0
+offset_right = 1183.0
+offset_bottom = 489.0
 placeholder_text = "Enter a number 0-9:"
 metadata/_edit_use_anchors_ = true
 
