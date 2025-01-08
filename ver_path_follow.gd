@@ -25,7 +25,6 @@ func _ready():
 	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
 	print("Target number vertical is:", targetnumber_ver)
 
-	
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:
@@ -61,6 +60,7 @@ func _process(delta: float) -> void:
 	if value_entered:
 		if abs(progress_ratio - targetnumber_ver) < 0.07:
 			correct_ver()
+			
 		elif not popup_panel.visible:  # Show the popup only once
 			show_popup()
 
@@ -70,8 +70,6 @@ func correct_ver():
 func show_popup():
 	if popup_panel != null:
 		popup_panel.visible = true
-		
-		popup_panel.get_node("Label").text = "Unfortunately, this was wrong. Please try again!"
 		print("Popup displayed: Incorrect value entered.")
 
 func reset_scene() -> void:

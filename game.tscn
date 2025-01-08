@@ -95,6 +95,35 @@ offset_right = 594.0
 offset_bottom = 80.0
 text = "Correct!"
 
+[node name="Popup" type="Popup" parent="HorizontalPath/CanvasLayer"]
+auto_translate_mode = 1
+position = Vector2i(375, 100)
+size = Vector2i(369, 101)
+visible = true
+
+[node name="Label" type="Label" parent="HorizontalPath/CanvasLayer/Popup"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Unfortunately, this was wrong. Please try again!"
+
+[node name="Button" type="Button" parent="HorizontalPath/CanvasLayer/Popup"]
+custom_minimum_size = Vector2(50, 20)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
+
 [node name="VerticalPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_prc7j")
 
