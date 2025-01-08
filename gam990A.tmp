@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=13 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://path_follow_2d.gd" id="6_rnyo1"]
 [ext_resource type="Script" path="res://ver_path_follow.gd" id="7_0s5oc"]
 [ext_resource type="Texture2D" uid="uid://iom5vpl33q0r" path="res://Level2_no_assets_SQUARE.png" id="8_qo8bk"]
-[ext_resource type="Script" path="res://flyttarep.gd" id="9_ca8vr"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
@@ -140,21 +139,19 @@ position = Vector2(965, 540)
 scale = Vector2(0.674375, 0.674375)
 texture = ExtResource("8_qo8bk")
 
-[node name="Rep" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1462, 431)
 scale = Vector2(12, 12)
 texture = ExtResource("9_xxwdj")
-script = ExtResource("9_ca8vr")
 
-[node name="VerticalPath" type="Path2D" parent="Rep"]
-unique_name_in_owner = true
+[node name="VerticalPath" type="Path2D" parent="Sprite2D"]
 position = Vector2(18.6667, -35.9167)
 scale = Vector2(0.0833333, 0.0833333)
 curve = SubResource("Curve2D_prc7j")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="Rep/VerticalPath"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="Sprite2D/VerticalPath"]
 
-[node name="LineEdit" type="LineEdit" parent="Rep/VerticalPath/CanvasLayer2"]
+[node name="LineEdit" type="LineEdit" parent="Sprite2D/VerticalPath/CanvasLayer2"]
 visible = false
 offset_left = 927.0
 offset_top = 399.0
@@ -163,7 +160,7 @@ offset_bottom = 489.0
 placeholder_text = "Enter a number 0-9:"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Rep/VerticalPath/CanvasLayer2"]
+[node name="Label" type="Label" parent="Sprite2D/VerticalPath/CanvasLayer2"]
 visible = false
 offset_left = 532.0
 offset_top = 57.0
@@ -171,12 +168,12 @@ offset_right = 594.0
 offset_bottom = 80.0
 text = "Correct!"
 
-[node name="Popup" type="Popup" parent="Rep/VerticalPath/CanvasLayer2"]
+[node name="Popup" type="Popup" parent="Sprite2D/VerticalPath/CanvasLayer2"]
 position = Vector2i(375, 100)
 size = Vector2i(369, 101)
 visible = true
 
-[node name="Label" type="Label" parent="Rep/VerticalPath/CanvasLayer2/Popup"]
+[node name="Label" type="Label" parent="Sprite2D/VerticalPath/CanvasLayer2/Popup"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
@@ -184,7 +181,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Unfortunately, this was wrong. Please try again!"
 
-[node name="Button" type="Button" parent="Rep/VerticalPath/CanvasLayer2/Popup"]
+[node name="Button" type="Button" parent="Sprite2D/VerticalPath/CanvasLayer2/Popup"]
 custom_minimum_size = Vector2(50, 20)
 anchors_preset = 7
 anchor_left = 0.5
@@ -199,13 +196,13 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
 
-[node name="VerPathFollow" type="PathFollow2D" parent="Rep/VerticalPath"]
+[node name="VerPathFollow" type="PathFollow2D" parent="Sprite2D/VerticalPath"]
 unique_name_in_owner = true
 position = Vector2(-224, 822.001)
 rotation = -1.57201
 script = ExtResource("7_0s5oc")
 
-[node name="Sprite2D" type="Sprite2D" parent="Rep/VerticalPath/VerPathFollow"]
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/VerticalPath/VerPathFollow"]
 visible = false
 position = Vector2(-245, -95)
 rotation = 0.00110497

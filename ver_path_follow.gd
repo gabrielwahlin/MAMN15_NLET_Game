@@ -9,7 +9,7 @@ extends PathFollow2D
 @onready var start_pointer_ver = $"/root/Game/StartPointerVer"
 @onready var end_pointer_ver = $"/root/Game/EndPointerVer"
 @onready var horizontal_path = $"/root/Game/HorizontalPath"
-@onready var vertical_path = $"/root/Game/VerticalPath"
+@onready var vertical_path = $"/root/Game/Rep/VerticalPath"
 
 
 var target_ratio: float = 0.0

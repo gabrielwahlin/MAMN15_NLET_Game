@@ -9,9 +9,9 @@ extends PathFollow2D
 @onready var start_pointer_ver = $"/root/Game/StartPointerVer"
 @onready var end_pointer_ver = $"/root/Game/EndPointerVer"
 @onready var horizontal_path = $"/root/Game/HorizontalPath" # Reference to HorizontalPath
-@onready var vertical_path = $"/root/Game/VerticalPath" # Reference to VerticalPath
-@onready var line_edit_ver = $"/root/Game/VerticalPath/CanvasLayer2/LineEdit"
-@onready var spritever = $"/root/Game/VerticalPath/VerPathFollow/Sprite2D"
+@onready var vertical_path = $"/root/Game/Rep/VerticalPath" # Reference to VerticalPath
+@onready var line_edit_ver = $"/root/Game/Rep/VerticalPath/CanvasLayer2/LineEdit"
+@onready var spritever = $"/root/Game/Rep/VerticalPath/VerPathFollow/Sprite2D"
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
