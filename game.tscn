@@ -70,9 +70,9 @@ rotation = -0.0010661
 script = ExtResource("6_rnyo1")
 
 [node name="Sprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
-position = Vector2(-350, -151.115)
+position = Vector2(-242.9, -94.259)
 rotation = 0.00110497
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_fjnxe")
 centered = false
 offset = Vector2(50, 0)
@@ -96,7 +96,6 @@ offset_bottom = 80.0
 text = "Correct!"
 
 [node name="VerticalPath" type="Path2D" parent="."]
-visible = false
 curve = SubResource("Curve2D_prc7j")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
@@ -118,15 +117,43 @@ offset_right = 594.0
 offset_bottom = 80.0
 text = "Correct!"
 
+[node name="Popup" type="Popup" parent="VerticalPath/CanvasLayer2"]
+position = Vector2i(375, 100)
+size = Vector2i(369, 101)
+visible = true
+
+[node name="Label" type="Label" parent="VerticalPath/CanvasLayer2/Popup"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Unfortunately, this was wrong. Please try again!"
+
+[node name="Button" type="Button" parent="VerticalPath/CanvasLayer2/Popup"]
+custom_minimum_size = Vector2(50, 20)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
+
 [node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]
 position = Vector2(921, 497)
 rotation = -1.5708
 script = ExtResource("7_0s5oc")
 
 [node name="Sprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
-position = Vector2(-350, -151.115)
+position = Vector2(-245, -95)
 rotation = 0.00110497
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_fjnxe")
 centered = false
 offset = Vector2(50, 0)
