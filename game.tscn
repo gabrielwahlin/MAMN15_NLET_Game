@@ -78,11 +78,7 @@ position = Vector2(122, 502)
 script = ExtResource("6_rnyo1")
 
 [node name="Sprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
-<<<<<<< HEAD
-position = Vector2(-356.019, -143.121)
-=======
 position = Vector2(-242.9, -94.259)
->>>>>>> 8a497f250c79ed587a3fb6d191e1dd76d2ec067d
 rotation = 0.00110497
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_fjnxe")
@@ -136,11 +132,6 @@ grow_vertical = 0
 text = "Restart"
 
 [node name="VerticalPath" type="Path2D" parent="."]
-<<<<<<< HEAD
-visible = false
-position = Vector2(275, 71)
-=======
->>>>>>> 8a497f250c79ed587a3fb6d191e1dd76d2ec067d
 curve = SubResource("Curve2D_prc7j")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
