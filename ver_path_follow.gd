@@ -11,6 +11,7 @@ extends PathFollow2D
 @onready var horizontal_path = $"/root/Game/HorizontalPath"
 @onready var vertical_path = $"/root/Game/VerticalPath"
 
+
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
@@ -25,6 +26,7 @@ func _ready():
 	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
 	print("Target number vertical is:", targetnumber_ver)
 
+	
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:
@@ -49,20 +51,29 @@ func _on_text_submitted(text: String) -> void:
 			print("New target progress_ratio:", target_ratio)
 		else:
 			print("Invalid input: Enter a number between 0 and 9.")
+			show_popup()  # Show popup immediately for invalid input
 	else:
 		print("Invalid input: Please enter a valid number.")
+		show_popup()  # Show popup immediately for invalid input
 
 	line_edit.clear()
+
 
 func _process(delta: float) -> void:
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
 
 	if value_entered:
-		if abs(progress_ratio - targetnumber_ver) < 0.07:
+		if abs(progress_ratio - targetnumber_ver) < 0.07 and abs(progress_ratio - target_ratio) < 0.07:  # The sprite is within the correct range and stopped
 			correct_ver()
-			
-		elif not popup_panel.visible:  # Show the popup only once
-			show_popup()
+		else:
+			# Only show the popup if it's not already visible and the sprite is not in the correct range yet
+			if not popup_panel.visible:
+				show_popup()
+	else:
+		# If no value is entered yet, keep the popup hidden unless needed
+		if popup_panel != null and not popup_panel.visible:
+			popup_panel.visible = false  # Hide the popup by default until an invalid input occurs.
+
 
 func correct_ver():
 	win_label.visible = true
@@ -70,6 +81,7 @@ func correct_ver():
 func show_popup():
 	if popup_panel != null:
 		popup_panel.visible = true
+		popup_panel.get_node("Label").text = "Unfortunately, this was wrong. Please try again!"
 		print("Popup displayed: Incorrect value entered.")
 
 func reset_scene() -> void:

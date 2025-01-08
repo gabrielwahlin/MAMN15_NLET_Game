@@ -99,7 +99,6 @@ text = "Correct!"
 auto_translate_mode = 1
 position = Vector2i(375, 100)
 size = Vector2i(369, 101)
-visible = true
 
 [node name="Label" type="Label" parent="HorizontalPath/CanvasLayer/Popup"]
 anchors_preset = 10
@@ -180,6 +179,7 @@ rotation = -1.5708
 script = ExtResource("7_0s5oc")
 
 [node name="Sprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
+visible = false
 position = Vector2(-245, -95)
 rotation = 0.00110497
 scale = Vector2(0.2, 0.2)
