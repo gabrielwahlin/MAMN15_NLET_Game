@@ -9,9 +9,12 @@ extends PathFollow2D
 @onready var start_pointer_ver = $"/root/Game/StartPointerVer"
 @onready var end_pointer_ver = $"/root/Game/EndPointerVer"
 @onready var horizontal_path = $"/root/Game/HorizontalPath" # Reference to HorizontalPath
-@onready var vertical_path = $"/root/Game/Rep/VerticalPath" # Reference to VerticalPath
-@onready var line_edit_ver = $"/root/Game/Rep/VerticalPath/CanvasLayer2/LineEdit"
-@onready var spritever = $"/root/Game/Rep/VerticalPath/VerPathFollow/Sprite2D"
+@onready var vertical_path = $"/root/Game/VerticalPath" # Reference to VerticalPath
+@onready var line_edit_ver = $"/root/Game/VerticalPath/CanvasLayer2/LineEdit"
+@onready var spritever = $"/root/Game/VerticalPath/VerPathFollow/Sprite2D"
+@onready var rep = $/root/Game/VerticalPath/rep
+@onready var mus = $/root/Game/VerticalPath/VerPathFollow/Sprite2D
+
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
@@ -25,8 +28,11 @@ func round_to(value: float, decimals: int) -> float:
 
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.1, 0.9), 3)
+	rep.position.x = targetnumber_hor*1000 - 1200
+	mus.position.y = targetnumber_hor*1000 - 1100
 	print("Target number horizontal is:", targetnumber_hor)
-
+	print("r_x is :", rep.position.x)
+	print("m_x is : ", mus.position.y)
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:

@@ -1,24 +1,38 @@
 extends Sprite2D
 
-# Range for random horizontal position (can adjust these as needed)
-const MIN_X_POSITION = 1000.0  # Set to the desired min value
-const MAX_X_POSITION = 1500.0   # Set to the desired max value
+# Range for random horizontal position
+const MIN_X_POSITION = 200.0
+const MAX_X_POSITION = 1500.0
 
-@onready var path: Path2D = %VerticalPath  # Path2D node as a child of the sprite
-@onready var path_follow: PathFollow2D = %VerPathFollow  # PathFollow2D is a child of Path2D
+@onready var verpath: Path2D = $VerticalPath
+@onready var path_follow: PathFollow2D = $VerticalPath/VerPathFollow
+@onready var second_sprite: Sprite2D = $"VerticalPath/VerPathFollow/Sprite2D"  # Reference the second sprite
 
 func _ready() -> void:
-	# Check if path and path_follow are properly assigned
-	if path and path_follow:
-		print("Path2D and PathFollow2D nodes found and assigned.")
-	else:
-		print("Path2D or PathFollow2D node not found!")
+	randomize()
 
-	# Randomize the horizontal position within the specified range.
+	# Validate nodes
+	if not verpath or not path_follow or not second_sprite:
+		push_error("Path2D, PathFollow2D, or SecondSprite node is missing!")
+		return
+
+	print("Path2D, PathFollow2D, and SecondSprite nodes found and assigned.")
+
+	# Generate a random horizontal position
 	var random_x = randf_range(MIN_X_POSITION, MAX_X_POSITION)
+	#position.x = random_x
+	verpath.position.x = random_x
 
-	# Set the sprite's position
-	position.x = random_x
+	# Align PathFollow2D with the first sprite
+	path_follow.position.x = verpath.position.x
 
-	# Move the path horizontally to match the sprite
-	path.position.x = random_x
+	# Initialize the second sprite's position
+	update_second_sprite_position()
+
+func _process(delta: float) -> void:
+	# Continuously update the second sprite's position to follow the path
+	update_second_sprite_position()
+
+func update_second_sprite_position() -> void:
+	# Set the second sprite's position to match the PathFollow2D's position
+	second_sprite.position = path_follow.global_position
