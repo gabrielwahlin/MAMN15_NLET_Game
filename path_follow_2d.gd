@@ -35,6 +35,7 @@ func _ready():
 	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
 	rep.position.x = targetnumber_hor * 1000 - 1200
 	#mus.position.y = targetnumber_hor * 1000 - 700
+	
 	mus_vert.position.y = targetnumber_hor * 1000 - 1020
 	ost.position.x = targetnumber_hor * 1000 - 1200
 	ost.position.y = targetnumber_ver * -1000 + 1000
