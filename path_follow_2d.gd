@@ -37,9 +37,11 @@ func _ready():
 	mus.position.y = targetnumber_hor*1000 - 1100
 	ost.position.x = targetnumber_hor*1000 - 1200
 	ost.position.y = (targetnumber_ver)*-1000 +1000
+	end_pointer_ver.position.x = targetnumber_hor*1000 + 575
+	start_pointer_ver.position.x = targetnumber_hor*1000 + 575
 	print("Target number horizontal is:", targetnumber_hor)
-	#print("r_x is :", rep.position.x)
-	print("o_y is : ", ost.position.y)
+	print("s_x is :", start_pointer_ver.position.y)
+	print("e_y is : ", end_pointer_ver.position.y)
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:

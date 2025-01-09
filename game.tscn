@@ -61,13 +61,13 @@ scale = Vector2(3, 3)
 
 [node name="EndPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
-position = Vector2(1024, 157)
+position = Vector2(1527, 157)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
 [node name="StartPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
-position = Vector2(1024, 488)
+position = Vector2(1527, 842)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
