@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=21 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="5_qor7s"]
 [ext_resource type="Script" path="res://path_follow_2d.gd" id="6_rnyo1"]
 [ext_resource type="Script" path="res://ver_path_follow.gd" id="7_0s5oc"]
+[ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="7_xksbp"]
 [ext_resource type="Texture2D" uid="uid://iom5vpl33q0r" path="res://Level2_no_assets_SQUARE.png" id="8_qo8bk"]
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
@@ -20,11 +21,55 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eswe7"]
+atlas = ExtResource("7_xksbp")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lpxl"]
+atlas = ExtResource("7_xksbp")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1n3rh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eswe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lpxl")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [sub_resource type="Curve2D" id="Curve2D_prc7j"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -224, 822.001, 0, 0, 0, 0, -225, -4.99964)
 }
 point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci6hv"]
+atlas = ExtResource("7_xksbp")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p83g"]
+atlas = ExtResource("7_xksbp")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dftut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci6hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p83g")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="Game" type="Node2D"]
 
@@ -80,13 +125,21 @@ curve = SubResource("Curve2D_tixmx")
 position = Vector2(122, 502)
 script = ExtResource("6_rnyo1")
 
-[node name="Sprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
+[node name="GammalSprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
+visible = false
 position = Vector2(-242.9, -94.259)
 rotation = 0.00110497
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_fjnxe")
 centered = false
 offset = Vector2(50, 0)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="HorizontalPath/HorPathFollow"]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_1n3rh")
+animation = &"new_animation"
+frame = 1
+frame_progress = 0.642853
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HorizontalPath"]
 
@@ -143,7 +196,6 @@ texture = ExtResource("8_qo8bk")
 [node name="VerticalPath" type="Path2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1686, -0.0039978)
-scale = Vector2(1, 1)
 curve = SubResource("Curve2D_prc7j")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
@@ -211,7 +263,7 @@ position = Vector2(-224, 822.001)
 rotation = -1.57201
 script = ExtResource("7_0s5oc")
 
-[node name="Sprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
+[node name="GammalSprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
 visible = false
 position = Vector2(-261.893, -91.3209)
 rotation = 0.00110497
@@ -219,3 +271,9 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_fjnxe")
 centered = false
 offset = Vector2(50, 0)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="VerticalPath/VerPathFollow"]
+visible = false
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_dftut")
+animation = &"new_animation"
