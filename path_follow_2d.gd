@@ -31,7 +31,7 @@ func round_to(value: float, decimals: int) -> float:
 	return round(value * factor) / factor
 
 func _ready():
-	targetnumber_hor = round_to(rng.randf_range(0.1, 0.9), 3)
+	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 3)
 	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
 	rep.position.x = targetnumber_hor * 1000 - 1200
 	#mus.position.y = targetnumber_hor * 1000 - 700
@@ -65,8 +65,8 @@ func _ready():
 func _on_text_submitted(text: String) -> void:
 	if text.is_valid_float():
 		var input_number = int(text)
-		if input_number >= 0 and input_number <= 9:
-			target_ratio = round_to(input_number / 10.0, 3)
+		if input_number >= 0 and input_number <= 100:
+			target_ratio = round_to(input_number / 100.0, 1)
 			line_edit.editable = false
 			value_entered = true
 			print("New target progress_ratio:", target_ratio)
@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
 
 	if value_entered:
-		if abs(progress_ratio - targetnumber_hor) < 0.07 and abs(progress_ratio - target_ratio) < 0.07:
+		if abs(progress_ratio - targetnumber_hor) < 0.05 and abs(progress_ratio - target_ratio) < 0.05:
 			correct_hor()
 		else:
 			if not popup_panel.visible:

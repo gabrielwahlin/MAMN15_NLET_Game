@@ -53,8 +53,8 @@ func _ready():
 func _on_text_submitted(text: String) -> void:
 	if text.is_valid_float():
 		var input_number = int(text)
-		if input_number >= 0 and input_number <= 9:
-			target_ratio = round_to(input_number / 10.0, 3)
+		if input_number >= 0 and input_number <= 100:
+			target_ratio = round_to(input_number / 100.0, 3)
 			line_edit.editable = false
 			value_entered = true  # Set the flag to true
 			print("New target progress_ratio:", target_ratio)
@@ -72,7 +72,7 @@ func _process(delta: float) -> void:
 	lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
 	
 	if value_entered:
-		if abs(progress_ratio - targetnumber_ver) < 0.07 and abs(progress_ratio - target_ratio) < 0.07:
+		if abs(progress_ratio - targetnumber_ver) < 0.07 and abs(progress_ratio - target_ratio) < 0.05:
 			correct_ver()
 		else:
 			if popup_panel != null and not popup_panel.visible:
