@@ -121,7 +121,7 @@ text = "100"
 
 [node name="EndPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
-position = Vector2(1527, 157)
+position = Vector2(1527, 59)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
@@ -135,7 +135,7 @@ text = "100"
 
 [node name="StartPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
-position = Vector2(1527, 842)
+position = Vector2(1527, 879)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
@@ -297,7 +297,7 @@ text = "Restart"
 [node name="rep" type="Sprite2D" parent="VerticalPath"]
 position = Vector2(-221.004, 382)
 rotation = -0.00120914
-scale = Vector2(9, 12.3)
+scale = Vector2(9, 14.43)
 texture = ExtResource("9_xxwdj")
 
 [node name="ost" type="Sprite2D" parent="VerticalPath"]
@@ -322,6 +322,7 @@ centered = false
 offset = Vector2(50, 0)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="VerticalPath/VerPathFollow"]
+visible = false
 position = Vector2(-65, -42.155)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dftut")

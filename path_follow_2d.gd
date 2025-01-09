@@ -43,7 +43,7 @@ func _ready():
 	
 	mus_vert.position.y = targetnumber_hor * 750 - 1040
 	ost.position.x = targetnumber_hor * 750 - 1225
-	ost.position.y = targetnumber_ver * -1000 + 1000
+	ost.position.y = targetnumber_ver * -1000 + 975
 	end_pointer_ver.position.x = targetnumber_hor * 750 + 575
 	start_pointer_ver.position.x = targetnumber_hor * 750 + 575
 
