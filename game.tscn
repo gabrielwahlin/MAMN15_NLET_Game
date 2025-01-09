@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=14 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://path_follow_2d.gd" id="6_rnyo1"]
 [ext_resource type="Script" path="res://ver_path_follow.gd" id="7_0s5oc"]
 [ext_resource type="Texture2D" uid="uid://iom5vpl33q0r" path="res://Level2_no_assets_SQUARE.png" id="8_qo8bk"]
+[ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
@@ -197,6 +198,12 @@ position = Vector2(-221.004, 452.004)
 rotation = -0.00120914
 scale = Vector2(12, 12)
 texture = ExtResource("9_xxwdj")
+
+[node name="ost" type="Sprite2D" parent="VerticalPath"]
+position = Vector2(-221.004, 452.004)
+rotation = -0.00120914
+scale = Vector2(3, 3)
+texture = ExtResource("9_lpmrk")
 
 [node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]
 unique_name_in_owner = true

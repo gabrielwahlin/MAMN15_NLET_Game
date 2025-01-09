@@ -11,6 +11,8 @@ extends PathFollow2D
 @onready var horizontal_path = $"/root/Game/HorizontalPath"
 @onready var vertical_path = $"/root/Game/VerticalPath"  # Ensure this is the correct vertical path
 @onready var rep = $/root/Game/VerticalPath/rep
+@onready var hor_path_follow = $"/root/Game/HorizontalPath/HorPathFollow"
+
 
 
 var target_ratio: float = 0.0
@@ -28,7 +30,7 @@ func round_to(value: float, decimals: int) -> float:
 
 # Corrected _ready function
 func _ready():
-	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
+	targetnumber_ver = hor_path_follow.targetnumber_ver
 	print("Target number vertical is:", targetnumber_ver)
 	
 	self.offset = 0.0  # Start at the beginning of the path

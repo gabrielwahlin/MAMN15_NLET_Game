@@ -14,12 +14,16 @@ extends PathFollow2D
 @onready var spritever = $"/root/Game/VerticalPath/VerPathFollow/Sprite2D"
 @onready var rep = $/root/Game/VerticalPath/rep
 @onready var mus = $/root/Game/VerticalPath/VerPathFollow/Sprite2D
+@onready var ost = $/root/Game/VerticalPath/ost
+@onready var ver_path_follow = $"/root/Game/VerticalPath/VerPathFollow"
+
 
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
 var targetnumber_hor: float = 0.0
+var targetnumber_ver: float = 0.0
 var value_entered: bool = false # Track if a value has been entered
 
 func round_to(value: float, decimals: int) -> float:
@@ -28,11 +32,14 @@ func round_to(value: float, decimals: int) -> float:
 
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.1, 0.9), 3)
+	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
 	rep.position.x = targetnumber_hor*1000 - 1200
 	mus.position.y = targetnumber_hor*1000 - 1100
+	ost.position.x = targetnumber_hor*1000 - 1200
+	ost.position.y = (targetnumber_ver)*-1000 +1000
 	print("Target number horizontal is:", targetnumber_hor)
-	print("r_x is :", rep.position.x)
-	print("m_x is : ", mus.position.y)
+	#print("r_x is :", rep.position.x)
+	print("o_y is : ", ost.position.y)
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
 	else:
