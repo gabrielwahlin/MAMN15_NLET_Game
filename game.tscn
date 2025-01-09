@@ -145,11 +145,11 @@ frame_progress = 0.642853
 [node name="CanvasLayer" type="CanvasLayer" parent="HorizontalPath"]
 
 [node name="LineEdit" type="LineEdit" parent="HorizontalPath/CanvasLayer"]
-offset_left = 432.0
+offset_left = 75.0
 offset_top = 243.0
-offset_right = 712.0
+offset_right = 355.0
 offset_bottom = 333.0
-placeholder_text = "Skriv ett nummer mellan 0 och 99"
+placeholder_text = "Skriv ett nummer mellan 0 och 100"
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -163,8 +163,8 @@ text = "Correct!"
 
 [node name="Popup" type="Popup" parent="HorizontalPath/CanvasLayer"]
 auto_translate_mode = 1
-position = Vector2i(375, 100)
-size = Vector2i(369, 101)
+position = Vector2i(30, 100)
+size = Vector2i(370, 101)
 
 [node name="Label" type="Label" parent="HorizontalPath/CanvasLayer/Popup"]
 anchors_preset = 10
@@ -204,11 +204,11 @@ curve = SubResource("Curve2D_prc7j")
 
 [node name="LineEdit" type="LineEdit" parent="VerticalPath/CanvasLayer2"]
 visible = false
-offset_left = 432.0
+offset_left = 75.0
 offset_top = 243.0
-offset_right = 712.0
+offset_right = 355.0
 offset_bottom = 333.0
-placeholder_text = "Skriv ett nummer mellan 0 och 99"
+placeholder_text = "Skriv ett nummer mellan 0 och 100"
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -221,8 +221,8 @@ offset_bottom = 80.0
 text = "Correct!"
 
 [node name="Popup" type="Popup" parent="VerticalPath/CanvasLayer2"]
-position = Vector2i(375, 100)
-size = Vector2i(369, 101)
+position = Vector2i(30, 100)
+size = Vector2i(370, 101)
 visible = true
 
 [node name="Label" type="Label" parent="VerticalPath/CanvasLayer2/Popup"]
@@ -249,9 +249,9 @@ grow_vertical = 0
 text = "Restart"
 
 [node name="rep" type="Sprite2D" parent="VerticalPath"]
-position = Vector2(-221.004, 452.004)
+position = Vector2(-221.004, 443.004)
 rotation = -0.00120914
-scale = Vector2(12, 12)
+scale = Vector2(12.3, 12.3)
 texture = ExtResource("9_xxwdj")
 
 [node name="ost" type="Sprite2D" parent="VerticalPath"]
