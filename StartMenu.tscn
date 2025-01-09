@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxwwg4wckwqe4"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_64kaa"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_64kaa")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 898.0
+offset_top = 841.0
+offset_right = 953.0
+offset_bottom = 872.0
+scale = Vector2(3, 3)
+text = "Starta"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

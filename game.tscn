@@ -205,6 +205,7 @@ rotation = -1.57201
 script = ExtResource("7_0s5oc")
 
 [node name="Sprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
+visible = false
 position = Vector2(-261.893, -91.3209)
 rotation = 0.00110497
 scale = Vector2(0.2, 0.2)
