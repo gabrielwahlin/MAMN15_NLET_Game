@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=21 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://path_follow_2d.gd" id="6_rnyo1"]
 [ext_resource type="Script" path="res://ver_path_follow.gd" id="7_0s5oc"]
 [ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="7_xksbp"]
-[ext_resource type="Texture2D" uid="uid://iom5vpl33q0r" path="res://Level2_no_assets_SQUARE.png" id="8_qo8bk"]
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
@@ -18,7 +17,7 @@ distance = -504.0
 
 [sub_resource type="Curve2D" id="Curve2D_tixmx"]
 _data = {
-"points": PackedVector2Array(-65.1783, 0, 65.1783, 0, 122, 502, 0, 0, 0, 0, 1817.83, 504.259)
+"points": PackedVector2Array(-65.1783, 0, 65.1783, 0, 122, 502, 0, 0, 0, 0, 1972.69, 504.661)
 }
 point_count = 2
 
@@ -109,15 +108,17 @@ offset_bottom = 40.6667
 text = "0"
 
 [node name="EndPointerHor" parent="." instance=ExtResource("5_qor7s")]
-position = Vector2(1240, 829)
+position = Vector2(1316, 829)
 scale = Vector2(3, 3)
 
 [node name="EndNumberHor" type="Label" parent="EndPointerHor"]
+z_index = 1
 offset_left = -13.6667
 offset_top = 15.3333
 offset_right = 26.3333
 offset_bottom = 38.3333
 text = "100"
+metadata/_edit_use_anchors_ = true
 
 [node name="EndPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
@@ -152,14 +153,15 @@ position = Vector2(623, 894)
 scale = Vector2(0.75, 0.75)
 
 [node name="Spik3" type="Sprite2D" parent="Node2D"]
+position = Vector2(42, 1.333)
 texture = ExtResource("12_x4iky")
 
 [node name="Spik2" type="Sprite2D" parent="Node2D"]
-position = Vector2(282.666, 0)
+position = Vector2(334.667, 1.19209e-07)
 texture = ExtResource("12_x4iky")
 
 [node name="Spik4" type="Sprite2D" parent="Node2D"]
-position = Vector2(571.333, 0)
+position = Vector2(629.333, -1.33333)
 texture = ExtResource("12_x4iky")
 
 [node name="HorizontalPath" type="Path2D" parent="."]
@@ -234,12 +236,6 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
-
-[node name="alignhoripath" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(965, 540)
-scale = Vector2(0.674375, 0.674375)
-texture = ExtResource("8_qo8bk")
 
 [node name="VerticalPath" type="Path2D" parent="."]
 unique_name_in_owner = true
