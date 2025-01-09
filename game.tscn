@@ -100,9 +100,23 @@ shape = SubResource("WorldBoundaryShape2D_tx2w5")
 position = Vector2(435, 827)
 scale = Vector2(3, 3)
 
+[node name="StartNumberHor" type="Label" parent="StartPointerHor"]
+offset_left = -4.66667
+offset_top = 17.6667
+offset_right = 5.33333
+offset_bottom = 40.6667
+text = "0"
+
 [node name="EndPointerHor" parent="." instance=ExtResource("5_qor7s")]
 position = Vector2(1510, 829)
 scale = Vector2(3, 3)
+
+[node name="EndNumberHor" type="Label" parent="EndPointerHor"]
+offset_left = -13.6667
+offset_top = 15.3333
+offset_right = 26.3333
+offset_bottom = 38.3333
+text = "100"
 
 [node name="EndPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
@@ -110,11 +124,27 @@ position = Vector2(1527, 157)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
+[node name="EndNumberVer" type="Label" parent="EndPointerVer"]
+offset_left = -12.3334
+offset_top = -11.3333
+offset_right = 27.6666
+offset_bottom = 11.6667
+rotation = 4.71239
+text = "100"
+
 [node name="StartPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
 position = Vector2(1527, 842)
 rotation = 1.5708
 scale = Vector2(3, 3)
+
+[node name="StartNumberVer" type="Label" parent="StartPointerVer"]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 29.0
+offset_bottom = 12.0
+rotation = 4.71239
+text = "0"
 
 [node name="HorizontalPath" type="Path2D" parent="."]
 position = Vector2(357, 371)

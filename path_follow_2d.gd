@@ -4,6 +4,10 @@ extends PathFollow2D
 @onready var win_label = $"../CanvasLayer/Label"
 @onready var popup_panel = $"../CanvasLayer/Popup"
 @onready var start_pointer_hor = $"/root/Game/StartPointerHor"
+@onready var start_number_hor = $"/root/Game/StartPointerHor/StartNumberHor"
+@onready var end_number_hor = $"/root/Game/EndPointerHor/EndNumberHor"
+@onready var start_number_ver = $"/root/Game/StartPointerVer/StartNumberVer"
+@onready var end_number_ver = $"/root/Game/EndPointerVer/EndNumberVer"
 @onready var try_again_button = popup_panel.get_node("Button")
 @onready var end_pointer_hor = $"/root/Game/EndPointerHor"
 @onready var start_pointer_ver = $"/root/Game/StartPointerVer"
@@ -122,10 +126,18 @@ func correct_hor():
 		popup_panel.visible = false
 
 	if abs(progress_ratio - targetnumber_hor) < 0.07:
+		
 		start_pointer_hor.visible = false
 		end_pointer_hor.visible = false
+		
+		start_number_hor.visible = false
+		end_number_hor.visible = false
+		
 		start_pointer_ver.visible = true
 		end_pointer_ver.visible = true
+		
+		start_number_ver.visible = true
+		end_number_ver.visible = true
 
 	var parent_path = get_parent()
 	if parent_path == horizontal_path and vertical_path != null:
