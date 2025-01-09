@@ -37,14 +37,15 @@ func round_to(value: float, decimals: int) -> float:
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 3)
 	targetnumber_ver = round_to(rng.randf_range(0.1, 0.9), 3)
-	rep.position.x = targetnumber_hor * 1000 - 1200
+	rep.position.x = targetnumber_hor * 750 - 1225
+	print("he:", rep.position.x)
 	#mus.position.y = targetnumber_hor * 1000 - 700
 	
-	mus_vert.position.y = targetnumber_hor * 1000 - 1020
-	ost.position.x = targetnumber_hor * 1000 - 1200
+	mus_vert.position.y = targetnumber_hor * 750 - 1040
+	ost.position.x = targetnumber_hor * 750 - 1225
 	ost.position.y = targetnumber_ver * -1000 + 1000
-	end_pointer_ver.position.x = targetnumber_hor * 1000 + 575
-	start_pointer_ver.position.x = targetnumber_hor * 1000 + 575
+	end_pointer_ver.position.x = targetnumber_hor * 750 + 575
+	start_pointer_ver.position.x = targetnumber_hor * 750 + 575
 
 	print("Target number horizontal is:", targetnumber_hor)
 
@@ -70,7 +71,7 @@ func _on_text_submitted(text: String) -> void:
 	if text.is_valid_float():
 		var input_number = int(text)
 		if input_number >= 0 and input_number <= 100:
-			target_ratio = round_to(input_number / 100.0, 1)
+			target_ratio = round_to(input_number / 100.0, 3)
 			line_edit.editable = false
 			value_entered = true
 			print("New target progress_ratio:", target_ratio)

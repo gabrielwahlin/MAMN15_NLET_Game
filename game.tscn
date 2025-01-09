@@ -109,7 +109,7 @@ offset_bottom = 40.6667
 text = "0"
 
 [node name="EndPointerHor" parent="." instance=ExtResource("5_qor7s")]
-position = Vector2(1510, 829)
+position = Vector2(1240, 829)
 scale = Vector2(3, 3)
 
 [node name="EndNumberHor" type="Label" parent="EndPointerHor"]
@@ -147,9 +147,24 @@ offset_bottom = 12.0
 rotation = 4.71239
 text = "0"
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(623, 894)
+scale = Vector2(0.75, 0.75)
+
+[node name="Spik3" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("12_x4iky")
+
+[node name="Spik2" type="Sprite2D" parent="Node2D"]
+position = Vector2(282.666, 0)
+texture = ExtResource("12_x4iky")
+
+[node name="Spik4" type="Sprite2D" parent="Node2D"]
+position = Vector2(571.333, 0)
+texture = ExtResource("12_x4iky")
+
 [node name="HorizontalPath" type="Path2D" parent="."]
-position = Vector2(357, 371)
-scale = Vector2(0.634498, 1)
+position = Vector2(378, 495)
+scale = Vector2(0.476, 0.751)
 curve = SubResource("Curve2D_tixmx")
 
 [node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
@@ -228,7 +243,7 @@ texture = ExtResource("8_qo8bk")
 
 [node name="VerticalPath" type="Path2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1686, -0.0039978)
+position = Vector2(1686, 60)
 curve = SubResource("Curve2D_prc7j")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
@@ -280,9 +295,9 @@ grow_vertical = 0
 text = "Restart"
 
 [node name="rep" type="Sprite2D" parent="VerticalPath"]
-position = Vector2(-221.004, 443.004)
+position = Vector2(-221.004, 382)
 rotation = -0.00120914
-scale = Vector2(12.3, 12.3)
+scale = Vector2(9, 12.3)
 texture = ExtResource("9_xxwdj")
 
 [node name="ost" type="Sprite2D" parent="VerticalPath"]
@@ -307,19 +322,7 @@ centered = false
 offset = Vector2(50, 0)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="VerticalPath/VerPathFollow"]
-position = Vector2(-127.952, -42.1548)
-scale = Vector2(2.5, 2.5)
+position = Vector2(-65, -42.155)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dftut")
 animation = &"new_animation"
-
-[node name="Spik2" type="Sprite2D" parent="."]
-position = Vector2(983, 894)
-texture = ExtResource("12_x4iky")
-
-[node name="Spik3" type="Sprite2D" parent="."]
-position = Vector2(707, 894)
-texture = ExtResource("12_x4iky")
-
-[node name="Spik4" type="Sprite2D" parent="."]
-position = Vector2(1257, 894)
-texture = ExtResource("12_x4iky")
