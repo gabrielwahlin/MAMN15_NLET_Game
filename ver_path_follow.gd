@@ -75,8 +75,10 @@ func _process(delta: float) -> void:
 		if abs(progress_ratio - targetnumber_ver) < 0.07 and abs(progress_ratio - target_ratio) < 0.05:
 			correct_ver()
 		else:
+		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
 			if popup_panel != null and not popup_panel.visible:
 				show_popup()
+				show_popup("Ajajaj, du gissade: " + str(progress_ratio*100) + " Rätt svar är: " + str(targetnumber_ver*100))
 	
 	# Adjust offset to move along the path
 	offset += delta * smooth_speed
@@ -85,10 +87,15 @@ func correct_ver():
 	win_label.visible = true
 
 func show_popup():
+func show_popup(message: String = "Unfortunately, this was wrong. Please try again!"):
 	if popup_panel != null:
 		popup_panel.visible = true
 		popup_panel.get_node("Label").text = "Unfortunately, this was wrong. Please try again!"
 		print("Popup displayed: Incorrect value entered.")
+		var label = popup_panel.get_node("Label") # Adjust this path if necessary
+		if label != null:
+			label.text = message
+			print("Popup displayed with message:", message)
 
 func reset_scene() -> void:
 	get_tree().reload_current_scene()
