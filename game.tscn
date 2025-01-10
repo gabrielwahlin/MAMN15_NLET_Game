@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=22 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
 [ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="1_w780e"]
 [ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="4_fjnxe"]
 [ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="5_qor7s"]
+[ext_resource type="Texture2D" uid="uid://cxi206plx3pf0" path="res://spik.png" id="6_lghqe"]
 [ext_resource type="Script" path="res://path_follow_2d.gd" id="6_rnyo1"]
 [ext_resource type="Script" path="res://ver_path_follow.gd" id="7_0s5oc"]
 [ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="7_xksbp"]
@@ -17,9 +18,9 @@ distance = -504.0
 
 [sub_resource type="Curve2D" id="Curve2D_tixmx"]
 _data = {
-"points": PackedVector2Array(-65.1783, 0, 65.1783, 0, 122, 502, 0, 0, 0, 0, 1972.69, 504.661)
+"points": PackedVector2Array(-65.1783, 0, 65.1783, 0, 122, 502, 0, 0, 0, 0, 1176.37, 505.518, 0, 0, 0, 0, 1972.69, 504.661)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eswe7"]
 atlas = ExtResource("7_xksbp")
@@ -97,7 +98,7 @@ scale = Vector2(0.33, 0.33)
 shape = SubResource("WorldBoundaryShape2D_tx2w5")
 
 [node name="StartPointerHor" parent="." instance=ExtResource("5_qor7s")]
-position = Vector2(435, 827)
+position = Vector2(450, 827)
 scale = Vector2(3, 3)
 
 [node name="StartNumberHor" type="Label" parent="StartPointerHor"]
@@ -108,7 +109,7 @@ offset_bottom = 40.6667
 text = "0"
 
 [node name="EndPointerHor" parent="." instance=ExtResource("5_qor7s")]
-position = Vector2(1316, 829)
+position = Vector2(1297, 829)
 scale = Vector2(3, 3)
 
 [node name="EndNumberHor" type="Label" parent="EndPointerHor"]
@@ -148,25 +149,9 @@ offset_bottom = 12.0
 rotation = 4.71239
 text = "0"
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(623, 894)
-scale = Vector2(0.75, 0.75)
-
-[node name="Spik3" type="Sprite2D" parent="Node2D"]
-position = Vector2(42, 1.333)
-texture = ExtResource("12_x4iky")
-
-[node name="Spik2" type="Sprite2D" parent="Node2D"]
-position = Vector2(334.667, 1.19209e-07)
-texture = ExtResource("12_x4iky")
-
-[node name="Spik4" type="Sprite2D" parent="Node2D"]
-position = Vector2(629.333, -1.33333)
-texture = ExtResource("12_x4iky")
-
 [node name="HorizontalPath" type="Path2D" parent="."]
-position = Vector2(378, 495)
-scale = Vector2(0.476, 0.751)
+position = Vector2(396, 507)
+scale = Vector2(0.458, 0.723)
 curve = SubResource("Curve2D_tixmx")
 
 [node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
@@ -255,10 +240,9 @@ alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="VerticalPath/CanvasLayer2"]
-visible = false
-offset_left = 532.0
+offset_left = 185.0
 offset_top = 57.0
-offset_right = 594.0
+offset_right = 247.0
 offset_bottom = 80.0
 text = "Correct!"
 
@@ -323,3 +307,34 @@ position = Vector2(-65, -42.155)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dftut")
 animation = &"new_animation"
+
+[node name="spikar" type="Node2D" parent="."]
+position = Vector2(623, 894)
+scale = Vector2(0.75, 0.75)
+
+[node name="Spik3" type="Sprite2D" parent="spikar"]
+position = Vector2(63, 1.333)
+texture = ExtResource("12_x4iky")
+
+[node name="Spik2" type="Sprite2D" parent="spikar"]
+position = Vector2(342, 0)
+texture = ExtResource("12_x4iky")
+
+[node name="Spik4" type="Sprite2D" parent="spikar"]
+position = Vector2(618.666, -1.33333)
+texture = ExtResource("12_x4iky")
+
+[node name="Spiky" type="Sprite2D" parent="spikar"]
+position = Vector2(1176, -568)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("6_lghqe")
+
+[node name="Spiky2" type="Sprite2D" parent="spikar"]
+position = Vector2(1177.33, -290.667)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("6_lghqe")
+
+[node name="Spiky3" type="Sprite2D" parent="spikar"]
+position = Vector2(1176, -838.667)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("6_lghqe")

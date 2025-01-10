@@ -55,7 +55,7 @@ func _on_text_submitted(text: String) -> void:
 		var input_number = int(text)
 		if input_number >= 0 and input_number <= 100:
 			target_ratio = round_to(input_number / 100.0, 3)
-			line_edit.editable = false
+			#line_edit.editable = false
 			value_entered = true  # Set the flag to true
 			print("New target progress_ratio:", target_ratio)
 		else:
