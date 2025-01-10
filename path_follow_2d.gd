@@ -26,6 +26,7 @@ extends PathFollow2D
 @onready var spiky3 = $/root/Game/spikar/Spiky3
 
 var target_ratio: float = 0.0
+var correct: float = 0.0
 var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
 var targetnumber_hor: float = 0.0
@@ -42,13 +43,17 @@ func round_to(value: float, decimals: int) -> float:
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 2)
 	targetnumber_ver = round_to(rng.randf_range(0.0, 1.0), 2)
-	# Set the positions of elements on the horizontal and vertical paths
-	rep.position.x = targetnumber_hor * 835 - 1225
-	mus_vert.position.y = targetnumber_hor * 835 - 1040
-	ost.position.x = targetnumber_hor * 835 - 1225
-	ost.position.y = targetnumber_ver * -800 + 815
-	end_pointer_ver.position.x = targetnumber_hor * 750 + 575
-	start_pointer_ver.position.x = targetnumber_hor * 750 + 575
+	#targetnumber_hor = 0.75
+	#targetnumber_ver = 1
+	rep.position.x = targetnumber_hor * 890 - 1240
+	#print("he:", ost.position.y)
+	#mus.position.y = targetnumber_hor * 1000 - 700
+	
+	mus_vert.position.y = rep.position.x + 185
+	ost.position.x = targetnumber_hor * 890 - 1240
+	ost.global_position.y = lerp(892, 0, targetnumber_ver)
+	end_pointer_ver.global_position.x = rep.global_position.x + 45
+	start_pointer_ver.global_position.x = rep.global_position.x + 45
 	
 	# Set positions of spiky obstacles
 	spiky1.global_position.x = rep.global_position.x + 60
@@ -102,18 +107,38 @@ func _process(delta: float) -> void:
 
 	# Check if the target has been reached and update UI accordingly
 	if value_entered:
+	# If the progress is very close to both the horizontal and target ratio
 		if abs(progress_ratio - targetnumber_hor) < 0.05 and abs(progress_ratio - target_ratio) < 0.05:
 			correct_hor()
-			popup_panel.visible = false
-			is_moving = false  # Stop moving once the target is reached
+			if popup_panel != null and popup_panel.visible:
+				popup_panel.visible = false
+#		elif abs(progress_ratio - target_ratio) < 0.10:
+#			if popup_panel != null and not popup_panel.visible:
+#				show_popup("You're close! Adjust your input.")
+
+#		# If progress is far from both targetnumber_hor and target_ratio
+#		elif abs(progress_ratio - targetnumber_hor) < 0.05 and abs(progress_ratio - target_ratio) >= 0.15:
+#			if popup_panel != null and not popup_panel.visible:
+#				show_popup("Sorry, you are way off!")
 		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
-			is_moving = false
 			if popup_panel != null and not popup_panel.visible:
-				show_popup()
-	else:
-		#is_moving = false
-		if popup_panel != null and popup_panel.visible:
+				show_popup("Ajajaj, du gissade: " + str(round(progress_ratio * 100 )) + " Rätt svar är: " + str(targetnumber_hor * 100))
+
+
+
+
+
+
+		# If progress is far from the target
+#		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
+#			if popup_panel != null and not popup_panel.visible:
+#				show_popup("Sorry, you are way off!")
+
+		# Hide the popup if the user hasn't entered a valid value
+		if not value_entered and popup_panel != null and popup_panel.visible:
 			popup_panel.visible = false
+
+
 
 	# Horizontal animation logic
 	if abs(progress_ratio - target_ratio) > 0.01:  # If moving horizontally
@@ -130,12 +155,13 @@ func _process(delta: float) -> void:
 		else:
 			mus_vert.stop()  # Stop the vertical animation when the target is reached
 
-# Function to show popup for invalid input
-func show_popup():
+func show_popup(message: String = "Unfortunately, this was wrong. Please try again!"):
 	if popup_panel != null:
 		popup_panel.visible = true
-		popup_panel.get_node("Label").text = "Unfortunately, this was wrong. Please try again!"
-		print("Popup displayed: Incorrect value entered.")
+		var label = popup_panel.get_node("Label") # Adjust this path if necessary
+		if label != null:
+			label.text = message
+			print("Popup displayed with message:", message)
 
 # Function to handle the correct horizontal path condition
 func correct_hor():
