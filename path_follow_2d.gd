@@ -23,6 +23,10 @@ extends PathFollow2D
 @onready var ost = $/root/Game/VerticalPath/ost
 @onready var ver_path_follow = $"/root/Game/VerticalPath/VerPathFollow"
 
+@onready var spiky1 = $/root/Game/spikar/Spiky
+@onready var spiky2 = $/root/Game/spikar/Spiky2
+@onready var spiky3 = $/root/Game/spikar/Spiky3
+
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
@@ -48,6 +52,10 @@ func _ready():
 	ost.position.y = targetnumber_ver * -800 + 815
 	end_pointer_ver.position.x = targetnumber_hor * 750 + 575
 	start_pointer_ver.position.x = targetnumber_hor * 750 + 575
+	
+	spiky1.global_position.x = rep.global_position.x + 60
+	spiky2.global_position.x = rep.global_position.x + 60
+	spiky3.global_position.x = rep.global_position.x + 60
 
 	print("Target number horizontal is:", targetnumber_hor)
 
