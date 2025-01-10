@@ -40,7 +40,7 @@ func _ready():
 	#targetnumber_hor = 1
 	#targetnumber_ver = 0
 	rep.position.x = targetnumber_hor * 835 - 1225
-	print("he:", ost.position.y)
+	#print("he:", ost.position.y)
 	#mus.position.y = targetnumber_hor * 1000 - 700
 	
 	mus_vert.position.y = targetnumber_hor * 835 - 1040
