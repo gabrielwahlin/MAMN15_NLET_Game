@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcjj26lv8pooo"]
+
+[ext_resource type="Texture2D" uid="uid://drmjy0ykni31g" path="res://sprites/Level3.png" id="1_vjhmw"]
+[ext_resource type="Texture2D" uid="uid://dhtkydvbem1ri" path="res://sprites/Mus_animation_2.png" id="2_jyqbd"]
+[ext_resource type="Script" path="res://animated_sprite_2d.gd" id="3_7ycn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyon7"]
+atlas = ExtResource("2_jyqbd")
+region = Rect2(0, 0, 85, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na2uk"]
+atlas = ExtResource("2_jyqbd")
+region = Rect2(85, 0, 85, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgfim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyon7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na2uk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(962.333, 539)
+scale = Vector2(11.9556, 11.9556)
+texture = ExtResource("1_vjhmw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(430, 880)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_qgfim")
+frame_progress = 0.171593
+script = ExtResource("3_7ycn3")

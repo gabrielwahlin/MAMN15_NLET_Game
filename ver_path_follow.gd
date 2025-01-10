@@ -16,7 +16,7 @@ extends PathFollow2D
 
 
 var target_ratio: float = 0.0
-var smooth_speed: float = 1.0
+var smooth_speed: float = 0.5
 var rng = RandomNumberGenerator.new()
 var targetnumber_ver: float = 0.0
 var value_entered: bool = false  # Flag to track if a value has been entered
