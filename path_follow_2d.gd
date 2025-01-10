@@ -40,8 +40,6 @@ func round_to(value: float, decimals: int) -> float:
 	return round(value * factor) / factor
 
 func _ready():
-	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 3)
-	targetnumber_ver = round_to(rng.randf_range(0.0, 1.0), 3)
 	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 2)
 	targetnumber_ver = round_to(rng.randf_range(0.0, 1.0), 2)
 	#targetnumber_hor = 0.75
@@ -99,18 +97,12 @@ func _on_text_submitted(text: String) -> void:
 
 func _process(delta: float) -> void:
 	# Smoothly update the progress ratio
-	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3)
 	progress_ratio = round_to(lerp(progress_ratio, target_ratio, 1.0 - pow(0.01, smooth_speed * delta)), 3) 
 
 	if value_entered:
 	# If the progress is very close to both the horizontal and target ratio
 		if abs(progress_ratio - targetnumber_hor) < 0.05 and abs(progress_ratio - target_ratio) < 0.05:
 			correct_hor()
-		else:
-			if not popup_panel.visible:
-				show_popup()
-	else:
-		if popup_panel != null and popup_panel.visible:
 			if popup_panel != null and popup_panel.visible:
 				popup_panel.visible = false
 #		elif abs(progress_ratio - target_ratio) < 0.10:
@@ -159,12 +151,9 @@ func _process(delta: float) -> void:
 		
 	
 
-func show_popup():
 func show_popup(message: String = "Unfortunately, this was wrong. Please try again!"):
 	if popup_panel != null:
 		popup_panel.visible = true
-		popup_panel.get_node("Label").text = "Unfortunately, this was wrong. Please try again!"
-		print("Popup displayed: Incorrect value entered.")
 		var label = popup_panel.get_node("Label") # Adjust this path if necessary
 		if label != null:
 			label.text = message
