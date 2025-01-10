@@ -41,9 +41,17 @@ func round_to(value: float, decimals: int) -> float:
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 3)
 	targetnumber_ver = round_to(rng.randf_range(0.0, 1.0), 3)
+	#targetnumber_hor = 0.75
+	#targetnumber_ver = 0.75
+	rep.position.x = targetnumber_hor * 890 - 1240
 	#print("he:", ost.position.y)
 	#mus.position.y = targetnumber_hor * 1000 - 700
 	
+	mus_vert.position.y = rep.position.x + 185
+	ost.position.x = targetnumber_hor * 890 - 1240
+	ost.global_position.y = lerp(892, 0, targetnumber_ver)
+	end_pointer_ver.global_position.x = rep.global_position.x + 45
+	start_pointer_ver.global_position.x = rep.global_position.x + 45
 	
 	spiky1.global_position.x = rep.global_position.x + 60
 	spiky2.global_position.x = rep.global_position.x + 60
