@@ -42,7 +42,7 @@ func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 3)
 	targetnumber_ver = round_to(rng.randf_range(0.0, 1.0), 3)
 	#targetnumber_hor = 0.75
-	#targetnumber_ver = 0.75
+	#targetnumber_ver = 1
 	rep.position.x = targetnumber_hor * 890 - 1240
 	#print("he:", ost.position.y)
 	#mus.position.y = targetnumber_hor * 1000 - 700
@@ -101,9 +101,6 @@ func _process(delta: float) -> void:
 	if value_entered:
 		if abs(progress_ratio - targetnumber_hor) < 0.05 and abs(progress_ratio - target_ratio) < 0.05:
 			correct_hor()
-			popup_panel.visible = false
-		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
-			if popup_panel != null and not popup_panel.visible:
 		else:
 			if not popup_panel.visible:
 				show_popup()
