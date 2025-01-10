@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxwwg4wckwqe4"]
+[gd_scene load_steps=3 format=3 uid="uid://c272srj508abq"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_64kaa"]
+[ext_resource type="Texture2D" uid="uid://cuj2h1g4j6imu" path="res://sprites/startmeny placeholder2.png" id="2_scvci"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,13 +12,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_64kaa")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960.222, 543)
+scale = Vector2(9.98148, 9.98148)
+texture = ExtResource("2_scvci")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 865.0
+offset_right = 1130.0
+offset_bottom = 896.0
+scale = Vector2(3, 3)
+text = "Unbounded"
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 898.0
-offset_top = 841.0
-offset_right = 953.0
-offset_bottom = 872.0
+offset_left = 663.0
+offset_top = 864.0
+offset_right = 741.0
+offset_bottom = 895.0
 scale = Vector2(3, 3)
-text = "Starta"
+text = "Bounded"
 
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

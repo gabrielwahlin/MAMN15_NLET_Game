@@ -101,8 +101,9 @@ func _process(delta: float) -> void:
 	if value_entered:
 		if abs(progress_ratio - targetnumber_hor) < 0.05 and abs(progress_ratio - target_ratio) < 0.05:
 			correct_hor()
-		else:
-			if not popup_panel.visible:
+			popup_panel.visible = false
+		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
+			if popup_panel != null and not popup_panel.visible:
 				show_popup()
 	else:
 		if popup_panel != null and popup_panel.visible:
