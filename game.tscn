@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
+[ext_resource type="Texture2D" uid="uid://b140gkg1k7gd0" path="res://fönster.png" id="13_w45l0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
 distance = -504.0
