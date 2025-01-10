@@ -17,6 +17,7 @@ extends PathFollow2D
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 0.5
+var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
 var targetnumber_ver: float = 0.0
 var value_entered: bool = false  # Flag to track if a value has been entered
@@ -76,6 +77,7 @@ func _process(delta: float) -> void:
 			correct_ver()
 			popup_panel.visible = false
 		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
+		else:
 			if popup_panel != null and not popup_panel.visible:
 				show_popup()
 

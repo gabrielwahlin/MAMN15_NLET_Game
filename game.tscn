@@ -19,7 +19,7 @@ distance = -504.0
 
 [sub_resource type="Curve2D" id="Curve2D_tixmx"]
 _data = {
-"points": PackedVector2Array(-65.1783, 0, 65.1783, 0, 122, 502, 0, 0, 0, 0, 1176.37, 505.518, 0, 0, 0, 0, 1972.69, 504.661)
+"points": PackedVector2Array(-65.1783, 0, 65.1783, 0, 122, 502, 0, 0, 0, 0, 1176.37, 505.518, 0, 0, 0, 0, 2056.77, 504.841)
 }
 point_count = 3
 
@@ -316,33 +316,34 @@ position = Vector2(623, 894)
 scale = Vector2(0.75, 0.75)
 
 [node name="Spik3" type="Sprite2D" parent="spikar"]
-position = Vector2(63, 86.6663)
+position = Vector2(66, 86.666)
 texture = ExtResource("12_x4iky")
 
 [node name="Spik2" type="Sprite2D" parent="spikar"]
-position = Vector2(342, 85.3333)
+position = Vector2(358, 85.333)
 texture = ExtResource("12_x4iky")
 
 [node name="Spik4" type="Sprite2D" parent="spikar"]
-position = Vector2(618.666, 83.9999)
+position = Vector2(655.666, 84)
 texture = ExtResource("12_x4iky")
 
 [node name="Spiky" type="Sprite2D" parent="spikar"]
-position = Vector2(1176, -568)
+position = Vector2(1176, -596.333)
 scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
 [node name="Spiky2" type="Sprite2D" parent="spikar"]
-position = Vector2(1177.33, -290.667)
+position = Vector2(1177.33, -301.334)
 scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
 [node name="Spiky3" type="Sprite2D" parent="spikar"]
-position = Vector2(1176, -838.667)
+position = Vector2(1176, -900.667)
 scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
 [node name="fönster" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1552, 376)
 scale = Vector2(12, 12)
 texture = ExtResource("13_w45l0")
