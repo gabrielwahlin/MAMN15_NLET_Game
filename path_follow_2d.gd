@@ -20,6 +20,7 @@ extends PathFollow2D
 @onready var mus = $/root/Game/HorizontalPath/HorPathFollow/Sprite2D
 @onready var mus_vert = $/root/Game/VerticalPath/VerPathFollow/Sprite2D
 @onready var ost = $/root/Game/VerticalPath/ost
+@onready var x_ost = $/root/Game/VerticalPath/Xost
 @onready var ver_path_follow = $"/root/Game/VerticalPath/VerPathFollow"
 @onready var spiky1 = $/root/Game/spikar/Spiky
 @onready var spiky2 = $/root/Game/spikar/Spiky2
@@ -46,17 +47,17 @@ func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 2)
 	targetnumber_ver = round_to(rng.randf_range(0.0, 1.0), 2)
 	# Set the positions of elements on the horizontal and vertical paths
-	rep.position.x = targetnumber_hor * 835 - 1225
-	mus_vert.position.y = targetnumber_hor * 835 - 1040
-	ost.position.x = targetnumber_hor * 835 - 1225
+	#rep.position.x = targetnumber_hor * 835 - 1225
+	#mus_vert.position.y = targetnumber_hor * 835 - 1040
+	x_ost.position.x = targetnumber_hor * 835 - 1050
 	ost.position.y = targetnumber_ver * -800 + 815
-	end_pointer_ver.position.x = targetnumber_hor * 750 + 575
-	start_pointer_ver.position.x = targetnumber_hor * 750 + 575
+	#end_pointer_ver.position.x = targetnumber_hor * 750 + 575
+	#start_pointer_ver.position.x = targetnumber_hor * 750 + 575
 	
 	# Set positions of spiky obstacles
-	spiky1.global_position.x = rep.global_position.x + 60
-	spiky2.global_position.x = rep.global_position.x + 60
-	spiky3.global_position.x = rep.global_position.x + 60
+	#spiky1.global_position.x = rep.global_position.x + 60
+	#spiky2.global_position.x = rep.global_position.x + 60
+	#spiky3.global_position.x = rep.global_position.x + 60
 
 	print("Target number horizontal is:", targetnumber_hor)
 
@@ -156,14 +157,19 @@ func show_popup(message: String = "Unfortunately, this was wrong. Please try aga
 func correct_hor():
 	if popup_panel.visible:
 		popup_panel.visible = false
-
+	await get_tree().create_timer(1).timeout
+	
+	while abs(1 - progress_ratio) < 0.01:
+		progress_ratio = progress_ratio + smooth_speed * 0.001
+		print ("hej")
 	if abs(progress_ratio - targetnumber_hor) < 0.07:
 		# Hide the horizontal pointers and numbers
 		start_pointer_hor.visible = false
 		end_pointer_hor.visible = false
 		start_number_hor.visible = false
 		end_number_hor.visible = false
-		
+		x_ost.visible = false
+		ost.visible = true
 		# Show the vertical path pointers and numbers
 		start_pointer_ver.visible = true
 		end_pointer_ver.visible = true
@@ -179,8 +185,8 @@ func correct_hor():
 		line_edit_ver.visible = true  # Show the vertical input field
 		spritever.visible = true  # Show vertical sprite
 		print("Switched to VerticalPath!")
-	else:
-		print("Not within the correct range yet. Waiting for the correct position.")
+	#else:
+		#print("Not within the correct range yet. Waiting for the correct position.")
 
 # Function to reset the scene
 func reset_scene() -> void:
