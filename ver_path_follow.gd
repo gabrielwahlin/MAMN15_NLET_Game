@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 	elif abs(target_ratio - progress_ratio) < 0.05 and value_entered:
 		mus_vert.stop()
 		if time_ver_flag != true:
-			print("Elapsed Time: " + str(elapsed_time_ver - hor_path_follow.elapsed_time_hor) + " seconds")
+			print("Elapsed Time: " + str(elapsed_time_ver - hor_path_follow.elapsed_time_hor - hor_path_follow.elapse_walk_time) + " seconds")
 			time_ver_flag = true
 		
 	# Check if the target has been reached and update UI accordingly
