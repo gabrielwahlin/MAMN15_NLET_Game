@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b140gkg1k7gd0"
-path="res://.godot/imported/fönster.png-05451e3f1f73294d03535254020fcfdc.ctex"
+uid="uid://3fytpv62vfmp"
+path="res://.godot/imported/Tallinje.png-6a0888b97052d056dc0b14d89df9a130.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fönster.png"
-dest_files=["res://.godot/imported/fönster.png-05451e3f1f73294d03535254020fcfdc.ctex"]
+source_file="res://sprites/Tallinje.png"
+dest_files=["res://.godot/imported/Tallinje.png-6a0888b97052d056dc0b14d89df9a130.ctex"]
 
 [params]
 

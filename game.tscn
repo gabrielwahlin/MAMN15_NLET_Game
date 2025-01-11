@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=28 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hslol"]
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" path="res://path_follow_2d.gd" id="6_rnyo1"]
 [ext_resource type="Script" path="res://ver_path_follow.gd" id="7_0s5oc"]
 [ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="7_xksbp"]
+[ext_resource type="Texture2D" uid="uid://3fytpv62vfmp" path="res://sprites/Tallinje.png" id="9_jxnq6"]
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
-[ext_resource type="Texture2D" uid="uid://b140gkg1k7gd0" path="res://fonster.png" id="13_w45l0"]
+[ext_resource type="Texture2D" path="res://fönster.png" id="13_w45l0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
 distance = -504.0
@@ -286,6 +287,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
 
+[node name="Tallinje" type="Sprite2D" parent="HorizontalPath"]
+visible = false
+position = Vector2(770.742, 589.212)
+scale = Vector2(5, 5)
+texture = ExtResource("9_jxnq6")
+
 [node name="VerticalPath" type="Path2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1686, 60)
@@ -404,7 +411,7 @@ position = Vector2(1176, -900.667)
 scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
-[node name="fonster" type="Sprite2D" parent="."]
+[node name="fönster" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1552, 376)
 scale = Vector2(12, 12)

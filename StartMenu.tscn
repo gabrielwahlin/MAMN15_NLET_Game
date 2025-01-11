@@ -110,19 +110,19 @@ texture = ExtResource("2_scvci")
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1030.0
-offset_top = 865.0
-offset_right = 1130.0
-offset_bottom = 896.0
+offset_left = 977.0
+offset_top = 819.0
+offset_right = 1077.0
+offset_bottom = 850.0
 scale = Vector2(3, 3)
 text = "Unbounded"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 663.0
-offset_top = 864.0
-offset_right = 741.0
-offset_bottom = 895.0
+offset_left = 699.0
+offset_top = 818.0
+offset_right = 777.0
+offset_bottom = 849.0
 scale = Vector2(3, 3)
 theme = SubResource("Theme_rm1g1")
 text = "Bounded"
@@ -138,6 +138,15 @@ visible = false
 offset_right = 1934.0
 offset_bottom = 1091.0
 color = Color(0, 0, 0, 1)
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 949.0
+offset_right = 891.0
+offset_bottom = 980.0
+scale = Vector2(3, 3)
+text = "Hur spelar jag?"
 
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
