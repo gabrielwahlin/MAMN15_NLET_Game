@@ -120,7 +120,7 @@ func _process(delta: float) -> void:
 			if popup_panel != null and not popup_panel.visible:
 				show_popup(
 					"Ajajaj, du gissade: "
-					+ str(target_ratio)
+					+ str(target_ratio*100)
 					+ " Rätt svar är: "
 					+ str(targetnumber_hor * 100)
 				)
