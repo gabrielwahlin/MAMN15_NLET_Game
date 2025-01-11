@@ -30,6 +30,7 @@ var smooth_speed: float = 1.0
 var rng = RandomNumberGenerator.new()
 var targetnumber_hor: float = 0.0
 var targetnumber_ver: float = 0.0
+var play_ani: bool = false
 var value_entered: bool = false
 var is_moving: bool = false  # Track whether movement should happen
 
@@ -80,14 +81,14 @@ func _on_text_submitted(text: String) -> void:
 	if text.is_valid_float():
 		var input_number = int(text)
 		if input_number >= 0 and input_number <= 100:
-			target_ratio = round_to((input_number + 5) / 100.0, 2)
+			target_ratio = round_to((input_number) / 100.0, 2)
 
 			line_edit.editable = false
 			value_entered = true
 			is_moving = true  # Start moving after valid input
 			print("New target progress_ratio:", target_ratio)
 		else:
-			print("Invalid input: Enter a number between 0 and 9.")
+			print("Invalid input: Enter a number between 0 and 100.")
 			show_popup()
 	else:
 		print("Invalid input: Please enter a valid number.")
@@ -98,41 +99,35 @@ func _on_text_submitted(text: String) -> void:
 # The main game loop
 func _process(delta: float) -> void:
 	# Smoothly update the progress ratio only when the player input is valid
-	if is_moving:
-		progress_ratio = clamp(progress_ratio + smooth_speed * delta, 0.0, 1.0)
- # Constant speed movement towards target
+	if progress_ratio < target_ratio:
+		progress_ratio = progress_ratio + smooth_speed * delta
+	# Horizontal animation logic
+	if value_entered and (targetnumber_hor - progress_ratio) > 0.01 and not play_ani:  # If moving horizontally
+			play_ani = true
+			mus.play("new_animation")
+	elif abs(target_ratio - progress_ratio) < 0.05:
+		mus.stop()
 
+		
 	# Check if the target has been reached and update UI accordingly
-	if value_entered:
-		if abs(progress_ratio - targetnumber_hor) < 0.05 and abs(progress_ratio - target_ratio) < 0.05:
+	if value_entered and not mus.is_playing():
+		if abs(targetnumber_hor - target_ratio) <= 0.051:
 			correct_hor()
 			popup_panel.visible = false
-			is_moving = false  # Stop moving once the target is reached
-		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_hor) > 0.05:
+			is_moving = false
+		else:
 			is_moving = false
 			if popup_panel != null and not popup_panel.visible:
 				show_popup(
 					"Ajajaj, du gissade: "
-					+ str(round(progress_ratio * 100))
+					+ str(target_ratio)
 					+ " Rätt svar är: "
 					+ str(targetnumber_hor * 100)
 				)
-		elif abs(progress_ratio - 1.0) <= 0.01 and target_ratio == 1.05:
-			# Special case for maximum value (100)
-			is_moving = false
-			if popup_panel != null and not popup_panel.visible:
-				show_popup("Ajajaj, du gissade 100! Rätt svar är: " + str(targetnumber_hor * 100))
 	else:
 		#is_moving = false
 		if popup_panel != null and popup_panel.visible:
 			popup_panel.visible = false
-
-	# Horizontal animation logic
-	if abs(progress_ratio - target_ratio) > 0.01:  # If moving horizontally
-		if not mus.is_playing():
-			mus.play("new_animation")
-	else:
-		mus.stop()  # Stop the horizontal animation when the target is reached
 
 	# Vertical animation logic
 	if vertical_path.visible:  # Check if we're on the vertical path
