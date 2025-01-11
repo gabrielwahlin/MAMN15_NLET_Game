@@ -241,6 +241,7 @@ curve = SubResource("Curve2D_tixmx")
 
 [node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
 position = Vector2(122, 502)
+loop = false
 script = ExtResource("6_rnyo1")
 
 [node name="GammalSprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
@@ -381,6 +382,7 @@ texture = ExtResource("9_lpmrk")
 unique_name_in_owner = true
 position = Vector2(-224, 822.001)
 rotation = -1.57201
+loop = false
 script = ExtResource("7_0s5oc")
 
 [node name="GammalSprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
