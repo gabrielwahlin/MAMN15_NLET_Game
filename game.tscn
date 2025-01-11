@@ -411,7 +411,6 @@ scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
 [node name="fönster" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(1552, 376)
 scale = Vector2(12, 12)
 

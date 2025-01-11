@@ -51,7 +51,7 @@ func _on_text_submitted(text: String) -> void:
 	if text.is_valid_float():
 		var input_number = int(text)
 		if input_number >= 0 and input_number <= 100:
-			target_ratio = round_to(input_number / 100.0, 3)
+			target_ratio = round_to((input_number + 5) / 100.0, 2)
 			line_edit.editable = false
 			value_entered = true
 			is_moving = true
@@ -69,7 +69,7 @@ func _on_text_submitted(text: String) -> void:
 func _process(delta: float) -> void:
 	# Smoothly update the progress ratio only when the player input is valid
 	if is_moving:
-		progress_ratio += smooth_speed * delta  # Constant speed movement towards target
+		progress_ratio = clamp(progress_ratio + smooth_speed * delta, 0.0, 1.0)  # Constant speed movement towards target
 
 	# Check if the target has been reached and update UI accordingly
 	if value_entered:
@@ -79,10 +79,15 @@ func _process(delta: float) -> void:
 			is_moving = false
 			# Stop the vertical animation when target is reached
 			mus_vert.stop()
-		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
+		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) > 0.05:
 			is_moving = false
 			if popup_panel != null and not popup_panel.visible:
 				show_popup("Ajajaj, du gissade: " + str(round(progress_ratio*100)) + " Rätt svar är: " + str(targetnumber_ver*100))
+		elif abs(progress_ratio - 1.0) <= 0.01 and target_ratio == 1.05:
+			# Special case for maximum value (100)
+			is_moving = false
+			if popup_panel != null and not popup_panel.visible:
+				show_popup("Ajajaj, du gissade 100! Rätt svar är: " + str(targetnumber_ver * 100))
 	else:
 		if popup_panel != null and popup_panel.visible:
 			popup_panel.visible = false
