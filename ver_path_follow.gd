@@ -82,7 +82,7 @@ func _process(delta: float) -> void:
 		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_ver) >= 0.07:
 			is_moving = false
 			if popup_panel != null and not popup_panel.visible:
-				show_popup()
+				show_popup("Ajajaj, du gissade: " + str(round(progress_ratio*100)) + " Rätt svar är: " + str(targetnumber_ver*100))
 	else:
 		if popup_panel != null and popup_panel.visible:
 			popup_panel.visible = false
@@ -97,14 +97,16 @@ func _process(delta: float) -> void:
 # Function to handle the correct vertical path condition
 func correct_ver():
 	win_label.visible = true
-	print("Correct vertical path reached!")
+	#print("Correct vertical path reached!")
 
 # Function to show popup for invalid input
-func show_popup():
+func show_popup(message: String = "Unfortunately, this was wrong. Please try again!"):
 	if popup_panel != null:
 		popup_panel.visible = true
-		popup_panel.get_node("Label").text = "Unfortunately, this was wrong. Please try again!"
-		print("Popup displayed: Incorrect value entered.")
+		var label = popup_panel.get_node("Label") # Adjust this path if necessary
+		if label != null:
+			label.text = message
+			print("Popup displayed with message:", message)
 
 # Function to reset the scene
 func reset_scene() -> void:

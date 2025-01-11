@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=27 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hslol"]
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
-[ext_resource type="Texture2D" path="res://fönster.png" id="13_w45l0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
 distance = -504.0
@@ -415,7 +414,6 @@ texture = ExtResource("6_lghqe")
 visible = false
 position = Vector2(1552, 376)
 scale = Vector2(12, 12)
-texture = ExtResource("13_w45l0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
