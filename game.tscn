@@ -263,7 +263,7 @@ curve = SubResource("Curve2D_tixmx")
 
 [node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
 position = Vector2(122, 502)
-rotation = 4.00595e-05
+rotation = 4.02232e-05
 loop = false
 script = ExtResource("6_rnyo1")
 
@@ -354,13 +354,34 @@ placeholder_text = "Skriv ett nummer mellan 0 och 100"
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="VerticalPath/CanvasLayer2"]
-offset_left = 185.0
-offset_top = 57.0
-offset_right = 247.0
-offset_bottom = 80.0
-text = "Correct!"
-metadata/_edit_use_anchors_ = true
+[node name="WinPopup" type="Popup" parent="VerticalPath/CanvasLayer2"]
+position = Vector2i(30, 100)
+size = Vector2i(370, 101)
+visible = true
+
+[node name="Button" type="Button" parent="VerticalPath/CanvasLayer2/WinPopup"]
+custom_minimum_size = Vector2(50, 20)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Nytt spel!"
+
+[node name="Label" type="Label" parent="VerticalPath/CanvasLayer2/WinPopup"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Du är såå duktig! Musen fick sin ost :)"
+horizontal_alignment = 1
 
 [node name="Popup" type="Popup" parent="VerticalPath/CanvasLayer2"]
 position = Vector2i(30, 100)
@@ -374,6 +395,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Unfortunately, this was wrong. Please try again!"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="VerticalPath/CanvasLayer2/Popup"]
 custom_minimum_size = Vector2(50, 20)

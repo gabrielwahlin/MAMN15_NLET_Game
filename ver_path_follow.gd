@@ -1,7 +1,9 @@
 extends PathFollow2D
 
 @onready var line_edit = $"../CanvasLayer2/LineEdit"
-@onready var win_label = $"../CanvasLayer2/Label"
+@onready var win_label = $"../CanvasLayer2/WinPopup/Label"
+@onready var win_popup_panel = $"../CanvasLayer2/WinPopup/"
+@onready var new_game_button = win_popup_panel.get_node("Button")
 @onready var popup_panel = $"../CanvasLayer2/Popup"
 @onready var try_again_button = popup_panel.get_node("Button")
 @onready var start_pointer_hor = $"/root/Game/StartPointerHor"
@@ -41,8 +43,8 @@ func _ready():
 	else:
 		line_edit.text_submitted.connect(_on_text_submitted)
 	
-	if win_label != null:
-		win_label.visible = false
+	if win_popup_panel != null:
+		win_popup_panel.visible = false
 	
 	if popup_panel != null:
 		popup_panel.visible = false  # Hide the popup initially
@@ -50,6 +52,8 @@ func _ready():
 	if try_again_button != null:
 		try_again_button.pressed.connect(reset_scene)
 
+	if new_game_button != null:
+		new_game_button.pressed.connect(reset_scene)
 # Function to handle input submission
 func _on_text_submitted(text: String) -> void:
 	if text.is_valid_float():
@@ -117,8 +121,12 @@ func _process(delta: float) -> void:
 
 # Function to handle the correct vertical path condition
 func correct_ver():
+<<<<<<< Updated upstream
 	win_label.visible = true
 
+=======
+	win_popup_panel.visible = true
+>>>>>>> Stashed changes
 	#print("Correct vertical path reached!")
 
 # Function to show popup for invalid input
