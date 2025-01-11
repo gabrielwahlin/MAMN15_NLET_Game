@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhjc7x7lih803"]
+
+[ext_resource type="Texture2D" uid="uid://wl41vwcimhrq" path="res://sprites/tutorial2.png" id="1_43wvf"]
+[ext_resource type="Script" path="res://tutorial_control.gd" id="2_wlr46"]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 546)
+texture = ExtResource("1_43wvf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_wlr46")
+
+[node name="Button" type="Button" parent="Control"]
+offset_left = 114.0
+offset_top = 109.0
+offset_right = 183.0
+offset_bottom = 140.0
+scale = Vector2(3, 3)
+text = "Tillbaka"
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxwwg4wckwqe4"]
+[gd_scene load_steps=9 format=3 uid="uid://c272srj508abq"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_64kaa"]
 [ext_resource type="Texture2D" uid="uid://cuj2h1g4j6imu" path="res://sprites/startmeny placeholder2.png" id="2_scvci"]
@@ -108,21 +108,30 @@ position = Vector2(960.222, 543)
 scale = Vector2(9.98148, 9.98148)
 texture = ExtResource("2_scvci")
 
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 795.0
+offset_top = 946.0
+offset_right = 918.0
+offset_bottom = 977.0
+scale = Vector2(3, 3)
+text = "Hur spelar jag?"
+
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1030.0
-offset_top = 865.0
-offset_right = 1130.0
-offset_bottom = 896.0
+offset_left = 991.0
+offset_top = 821.0
+offset_right = 1091.0
+offset_bottom = 852.0
 scale = Vector2(3, 3)
 text = "Unbounded"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 663.0
-offset_top = 864.0
-offset_right = 741.0
-offset_bottom = 895.0
+offset_left = 707.0
+offset_top = 821.0
+offset_right = 785.0
+offset_bottom = 852.0
 scale = Vector2(3, 3)
 theme = SubResource("Theme_rm1g1")
 text = "Bounded"
@@ -139,6 +148,7 @@ offset_right = 1934.0
 offset_bottom = 1091.0
 color = Color(0, 0, 0, 1)
 
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
