@@ -1,13 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhjc7x7lih803"]
+[gd_scene load_steps=8 format=3 uid="uid://bhjc7x7lih803"]
 
-[ext_resource type="Texture2D" uid="uid://wl41vwcimhrq" path="res://sprites/tutorial2.png" id="1_43wvf"]
+[ext_resource type="Texture2D" uid="uid://cnqdmtnbssjh2" path="res://sprites/tutorial_no_mouse.png" id="1_mvlkh"]
 [ext_resource type="Script" path="res://tutorial_control.gd" id="2_wlr46"]
+[ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="3_uww3i"]
+[ext_resource type="Script" path="res://mouse_idle_tutorial.gd" id="4_fvpe0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ksa"]
+atlas = ExtResource("3_uww3i")
+region = Rect2(0, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tdvc"]
+atlas = ExtResource("3_uww3i")
+region = Rect2(85, 0, 85, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejxqy"]
+animations = [{
+"frames": [{
+"duration": 3.5,
+"texture": SubResource("AtlasTexture_e3ksa")
+}, {
+"duration": 3.5,
+"texture": SubResource("AtlasTexture_5tdvc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Tutorial" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 546)
-texture = ExtResource("1_43wvf")
+texture = ExtResource("1_mvlkh")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -23,5 +47,15 @@ offset_right = 183.0
 offset_bottom = 140.0
 scale = Vector2(3, 3)
 text = "Tillbaka"
+
+[node name="mouse_idle_tutorial" type="AnimatedSprite2D" parent="."]
+position = Vector2(899, 838)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_ejxqy")
+animation = &"idle"
+frame_progress = 0.125486
+script = ExtResource("4_fvpe0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mouse_idle_tutorial"]
 
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]

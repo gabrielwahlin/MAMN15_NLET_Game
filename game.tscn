@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=33 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hslol"]
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
-[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="15_c17is"]
+[ext_resource type="PackedScene" uid="uid://dj6ty5bt6ep40" path="res://pause_menu.tscn" id="15_c17is"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
 distance = -504.0
@@ -73,6 +73,14 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_frh0l"]
+atlas = ExtResource("8_a1t0e")
+region = Rect2(0, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrlv4"]
+atlas = ExtResource("8_a1t0e")
+region = Rect2(85, 0, 85, 39)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ci6hv"]
 atlas = ExtResource("7_xksbp")
 region = Rect2(0, 0, 160, 90)
@@ -83,6 +91,17 @@ region = Rect2(160, 0, 160, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dftut"]
 animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_frh0l")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wrlv4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ci6hv")
@@ -399,7 +418,7 @@ visible = false
 position = Vector2(-65, -42.155)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dftut")
-animation = &"new_animation"
+animation = &"idle"
 
 [node name="spikar" type="Node2D" parent="."]
 position = Vector2(623, 894)
