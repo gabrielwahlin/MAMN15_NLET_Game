@@ -33,6 +33,8 @@ var targetnumber_ver: float = 0.0
 var play_ani: bool = false
 var value_entered: bool = false
 var is_moving: bool = false  # Track whether movement should happen
+var elapsed_time_hor: float = 0.0
+var time_hor_flag: bool = false
 
 # Round function to limit decimals
 func round_to(value: float, decimals: int) -> float:
@@ -98,6 +100,8 @@ func _on_text_submitted(text: String) -> void:
 
 # The main game loop
 func _process(delta: float) -> void:
+	elapsed_time_hor += delta
+	
 	# Smoothly update the progress ratio only when the player input is valid
 	if progress_ratio < target_ratio:
 		progress_ratio = progress_ratio + smooth_speed * delta
@@ -105,9 +109,11 @@ func _process(delta: float) -> void:
 	if value_entered and (targetnumber_hor - progress_ratio) > 0.01 and not play_ani:  # If moving horizontally
 			play_ani = true
 			mus.play("new_animation")
-	elif abs(target_ratio - progress_ratio) < 0.05:
+	elif abs(target_ratio - progress_ratio) < 0.05 and value_entered:
 		mus.stop()
-
+		if time_hor_flag != true:
+			print("Elapsed Time: " + str(elapsed_time_hor) + " seconds")
+			time_hor_flag = true
 		
 	# Check if the target has been reached and update UI accordingly
 	if value_entered and not mus.is_playing():
