@@ -13,6 +13,7 @@ extends PathFollow2D
 @onready var rep = $/root/Game/VerticalPath/rep
 @onready var hor_path_follow = $"/root/Game/HorizontalPath/HorPathFollow"
 @onready var mus_vert = $"/root/Game/VerticalPath/VerPathFollow/Sprite2D"
+@onready var celebration = $"../../celebr"
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0
@@ -87,6 +88,8 @@ func _process(delta: float) -> void:
 	# Check if the target has been reached and update UI accordingly
 	if value_entered and not mus_vert.is_playing():
 		if abs(targetnumber_ver - target_ratio) <= 0.051:
+			if not celebration.is_playing():
+				celebration.play()
 			correct_ver()
 			popup_panel.visible = false
 			is_moving = false
@@ -115,6 +118,7 @@ func _process(delta: float) -> void:
 # Function to handle the correct vertical path condition
 func correct_ver():
 	win_label.visible = true
+
 	#print("Correct vertical path reached!")
 
 # Function to show popup for invalid input

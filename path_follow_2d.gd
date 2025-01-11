@@ -26,6 +26,7 @@ extends PathFollow2D
 @onready var spiky1 = $/root/Game/spikar/Spiky
 @onready var spiky2 = $/root/Game/spikar/Spiky2
 @onready var spiky3 = $/root/Game/spikar/Spiky3
+@onready var celebration = $"../../celebr"
 
 var target_ratio: float = 0.0
 var smooth_speed: float = 1.0

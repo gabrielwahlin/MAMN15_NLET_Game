@@ -41,6 +41,7 @@ offset_bottom = 40.0
 script = ExtResource("2_wlr46")
 
 [node name="Button" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 114.0
 offset_top = 109.0
 offset_right = 183.0

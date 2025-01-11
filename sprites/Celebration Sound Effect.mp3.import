@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0qjr228ogova"
+path="res://.godot/imported/Celebration Sound Effect.mp3-b5c55f7703f1a10e28b9388138dde5f1.mp3str"
+
+[deps]
+
+source_file="res://sprites/Celebration Sound Effect.mp3"
+dest_files=["res://.godot/imported/Celebration Sound Effect.mp3-b5c55f7703f1a10e28b9388138dde5f1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
