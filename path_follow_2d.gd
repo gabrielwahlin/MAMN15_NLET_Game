@@ -108,7 +108,7 @@ func _process(delta: float) -> void:
 			correct_hor()
 			popup_panel.visible = false
 			is_moving = false  # Stop moving once the target is reached
-		elif abs(progress_ratio - target_ratio) < 0.05:
+		elif abs(progress_ratio - target_ratio) < 0.05 and abs(progress_ratio - targetnumber_hor) > 0.05:
 			is_moving = false
 			if popup_panel != null and not popup_panel.visible:
 				show_popup(
