@@ -125,6 +125,33 @@ shader_parameter/speed = 0.01
 
 [sub_resource type="Theme" id="Theme_rm1g1"]
 
+[sub_resource type="Animation" id="Animation_qsxk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.40278, 1.40278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 765)]
+}
+
 [sub_resource type="Animation" id="Animation_y5ifx"]
 resource_name = "titleText"
 loop_mode = 1
@@ -151,33 +178,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1000, 765), Vector2(1000, 850), Vector2(1000, 765)]
-}
-
-[sub_resource type="Animation" id="Animation_qsxk3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.40278, 1.40278)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1000, 765)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yyxax"]
@@ -240,6 +240,7 @@ offset_bottom = 1113.0
 texture = ExtResource("7_pj155")
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 795.0
 offset_top = 946.0
 offset_right = 918.0
@@ -248,6 +249,7 @@ scale = Vector2(3, 3)
 text = "Hur spelar jag?"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 991.0
 offset_top = 821.0
 offset_right = 1091.0
@@ -256,6 +258,7 @@ scale = Vector2(3, 3)
 text = "Unbounded"
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 707.0
 offset_top = 821.0
 offset_right = 785.0

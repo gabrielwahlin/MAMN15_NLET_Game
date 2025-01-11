@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cp4f8tobypifp"]
+[gd_scene load_steps=20 format=3 uid="uid://cp4f8tobypifp"]
 
 [ext_resource type="Script" path="res://bounded_spatial_or_not.gd" id="1_sjf3q"]
 [ext_resource type="Texture2D" uid="uid://bm4ji7if1f7tk" path="res://sprites/ratgame no mouse.png" id="2_kmp8s"]
 [ext_resource type="Script" path="res://animation_player.gd" id="3_thh6d"]
 [ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="4_1i6ic"]
+[ext_resource type="Texture2D" uid="uid://kc8ksmtfhwna" path="res://sprites/start menu background.png" id="4_4if28"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="5_g0flb"]
+[ext_resource type="Texture2D" uid="uid://cmwbf1yboj2pd" path="res://sprites/start menu pattern.png" id="6_tri7t"]
+[ext_resource type="Texture2D" uid="uid://d3scpc4eilud4" path="res://sprites/NLET Rat Game TEXT.png" id="8_7us4r"]
 
 [sub_resource type="Animation" id="Animation_5aigl"]
 length = 0.001
@@ -93,6 +97,10 @@ _data = {
 "fade_out": SubResource("Animation_ufrk0")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nry8"]
+shader = ExtResource("5_g0flb")
+shader_parameter/speed = 0.01
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7cjc1"]
 atlas = ExtResource("4_1i6ic")
 region = Rect2(0, 0, 85, 39)
@@ -115,6 +123,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_qsxk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.40278, 1.40278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 765)]
+}
+
+[sub_resource type="Animation" id="Animation_y5ifx"]
+resource_name = "titleText"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.4, 1.4), Vector2(1.6, 1.6), Vector2(1.4, 1.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1000, 765), Vector2(1000, 850), Vector2(1000, 765)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyxax"]
+_data = {
+"RESET": SubResource("Animation_qsxk3"),
+"titleText": SubResource("Animation_y5ifx")
+}
+
 [node name="Bounded_Spatial_Or_Not" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -125,6 +194,7 @@ grow_vertical = 2
 script = ExtResource("1_sjf3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960.222, 543)
 scale = Vector2(9.981, 9.981)
 texture = ExtResource("2_kmp8s")
@@ -159,12 +229,39 @@ offset_right = 1934.0
 offset_bottom = 1091.0
 color = Color(0, 0, 0, 1)
 
+[node name="backgroundMenu" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(976, 554)
+scale = Vector2(10.2685, 10.2685)
+texture = ExtResource("4_4if28")
+
+[node name="Pattern" type="TextureRect" parent="."]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1nry8")
+offset_left = -633.0
+offset_top = -1.0
+offset_right = 11250.0
+offset_bottom = 1113.0
+texture = ExtResource("6_tri7t")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(884, 547)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_ovkrx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+
+[node name="TitleText" type="Sprite2D" parent="."]
+position = Vector2(1000, 765)
+scale = Vector2(1.40278, 1.40278)
+texture = ExtResource("8_7us4r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleText"]
+libraries = {
+"": SubResource("AnimationLibrary_yyxax")
+}
+speed_scale = 0.25
 
 [connection signal="pressed" from="Spatial" to="." method="_on_spatial_pressed"]
 [connection signal="pressed" from="NoSpatial" to="." method="_on_no_spatial_pressed"]

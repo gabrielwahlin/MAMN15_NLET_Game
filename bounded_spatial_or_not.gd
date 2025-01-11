@@ -2,11 +2,14 @@ extends Control
 
 @onready var transition = $AnimationPlayer
 @onready var mouse = $AnimatedSprite2D
+@onready var text_anim = $TitleText/AnimationPlayer
+
 
 var target_scene: String = ""
 
 func _ready() -> void:
 	mouse.play()
+	text_anim.play("titleText")
 
 func _process(delta: float) -> void:
 	pass
