@@ -36,6 +36,7 @@ var value_entered: bool = false
 var is_moving: bool = false  # Track whether movement should happen
 var elapsed_time_hor: float = 0.0
 var time_hor_flag: bool = false
+var while_flag: bool = false
 
 # Round function to limit decimals
 func round_to(value: float, decimals: int) -> float:
@@ -119,6 +120,14 @@ func _process(delta: float) -> void:
 	# Check if the target has been reached and update UI accordingly
 	if value_entered and not mus.is_playing():
 		if abs(targetnumber_hor - target_ratio) <= 0.051:
+			await get_tree().create_timer(1).timeout
+			while not while_flag:
+				mus.play("new_animation")
+				await get_tree().create_timer(0.1).timeout
+				progress_ratio += smooth_speed * 0.001
+				if abs(1 - progress_ratio) < 0.05:
+					while_flag = true
+			mus.stop()
 			correct_hor()
 			popup_panel.visible = false
 			is_moving = false
@@ -157,24 +166,19 @@ func show_popup(message: String = "Unfortunately, this was wrong. Please try aga
 func correct_hor():
 	if popup_panel.visible:
 		popup_panel.visible = false
-	await get_tree().create_timer(1).timeout
-	
-	while abs(1 - progress_ratio) < 0.01:
-		progress_ratio = progress_ratio + smooth_speed * 0.001
-		print ("hej")
-	if abs(progress_ratio - targetnumber_hor) < 0.07:
-		# Hide the horizontal pointers and numbers
-		start_pointer_hor.visible = false
-		end_pointer_hor.visible = false
-		start_number_hor.visible = false
-		end_number_hor.visible = false
-		x_ost.visible = false
-		ost.visible = true
-		# Show the vertical path pointers and numbers
-		start_pointer_ver.visible = true
-		end_pointer_ver.visible = true
-		start_number_ver.visible = true
-		end_number_ver.visible = true
+	#if abs(progress_ratio - targetnumber_hor) < 0.07:
+	# Hide the horizontal pointers and numbers
+	start_pointer_hor.visible = false
+	end_pointer_hor.visible = false
+	start_number_hor.visible = false
+	end_number_hor.visible = false
+	x_ost.visible = false
+	ost.visible = true
+	# Show the vertical path pointers and numbers
+	start_pointer_ver.visible = true
+	end_pointer_ver.visible = true
+	start_number_ver.visible = true
+	end_number_ver.visible = true
 
 	# Switch to vertical path
 	var parent_path = get_parent()
