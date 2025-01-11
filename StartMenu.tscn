@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://c272srj508abq"]
+[gd_scene load_steps=21 format=3 uid="uid://c272srj508abq"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_64kaa"]
 [ext_resource type="Texture2D" uid="uid://bm4ji7if1f7tk" path="res://sprites/ratgame no mouse.png" id="2_c5pf1"]
 [ext_resource type="Script" path="res://animation_player.gd" id="3_6h74t"]
 [ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="4_a2h81"]
-
-[sub_resource type="Theme" id="Theme_rm1g1"]
+[ext_resource type="Texture2D" uid="uid://kc8ksmtfhwna" path="res://sprites/start menu background.png" id="5_pdtaj"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="6_q42d8"]
+[ext_resource type="Texture2D" uid="uid://cmwbf1yboj2pd" path="res://sprites/start menu pattern.png" id="7_pj155"]
+[ext_resource type="Texture2D" uid="uid://d3scpc4eilud4" path="res://sprites/NLET Rat Game TEXT.png" id="8_mbfbc"]
 
 [sub_resource type="Animation" id="Animation_5aigl"]
 length = 0.001
@@ -117,6 +119,73 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc664"]
+shader = ExtResource("6_q42d8")
+shader_parameter/speed = 0.01
+
+[sub_resource type="Theme" id="Theme_rm1g1"]
+
+[sub_resource type="Animation" id="Animation_y5ifx"]
+resource_name = "titleText"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.4, 1.4), Vector2(1.6, 1.6), Vector2(1.4, 1.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1000, 765), Vector2(1000, 850), Vector2(1000, 765)]
+}
+
+[sub_resource type="Animation" id="Animation_qsxk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.40278, 1.40278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 765)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyxax"]
+_data = {
+"RESET": SubResource("Animation_qsxk3"),
+"titleText": SubResource("Animation_y5ifx")
+}
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -127,37 +196,10 @@ grow_vertical = 2
 script = ExtResource("1_64kaa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960.222, 543)
 scale = Vector2(9.98148, 9.98148)
 texture = ExtResource("2_c5pf1")
-
-[node name="Button3" type="Button" parent="."]
-layout_mode = 0
-offset_left = 795.0
-offset_top = 946.0
-offset_right = 918.0
-offset_bottom = 977.0
-scale = Vector2(3, 3)
-text = "Hur spelar jag?"
-
-[node name="Button2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 991.0
-offset_top = 821.0
-offset_right = 1091.0
-offset_bottom = 852.0
-scale = Vector2(3, 3)
-text = "Unbounded"
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 707.0
-offset_top = 821.0
-offset_right = 785.0
-offset_bottom = 852.0
-scale = Vector2(3, 3)
-theme = SubResource("Theme_rm1g1")
-text = "Bounded"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -180,7 +222,60 @@ frame_progress = 0.597224
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 
+[node name="backgroundMenu" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(976, 554)
+scale = Vector2(10.2685, 10.2685)
+texture = ExtResource("5_pdtaj")
+
+[node name="Pattern" type="TextureRect" parent="."]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_yc664")
+layout_mode = 0
+offset_left = -633.0
+offset_top = -1.0
+offset_right = 11250.0
+offset_bottom = 1113.0
+texture = ExtResource("7_pj155")
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 795.0
+offset_top = 946.0
+offset_right = 918.0
+offset_bottom = 977.0
+scale = Vector2(3, 3)
+text = "Hur spelar jag?"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 991.0
+offset_top = 821.0
+offset_right = 1091.0
+offset_bottom = 852.0
+scale = Vector2(3, 3)
+text = "Unbounded"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 707.0
+offset_top = 821.0
+offset_right = 785.0
+offset_bottom = 852.0
+scale = Vector2(3, 3)
+theme = SubResource("Theme_rm1g1")
+text = "Bounded"
+
+[node name="TitleText" type="Sprite2D" parent="."]
+position = Vector2(1000, 765)
+scale = Vector2(1.40278, 1.40278)
+texture = ExtResource("8_mbfbc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleText"]
+libraries = {
+"": SubResource("AnimationLibrary_yyxax")
+}
+speed_scale = 0.25
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

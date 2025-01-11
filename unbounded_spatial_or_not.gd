@@ -7,7 +7,7 @@ var target_scene: String = ""
 
 func _ready() -> void:
 	mouse.play()
-
+	
 func _process(delta: float) -> void:
 	pass
 
