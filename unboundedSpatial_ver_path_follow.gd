@@ -37,6 +37,8 @@ func _ready():
 	targetnumber_ver = hor_path_follow.targetnumber_ver
 	print("Target number vertical is:", targetnumber_ver)
 	
+	mus_vert.play("idle")
+	
 	# Ensure other nodes are initialized
 	if line_edit == null:
 		print("Error: LineEdit node not found.")
@@ -82,7 +84,7 @@ func _process(delta: float) -> void:
 	# Check if the target has been reached and update UI accordingly
 	if value_entered and (targetnumber_ver - progress_ratio) > 0.01 and not play_ani: 
 			play_ani = true
-			mus_vert.play("new_animation")
+			mus_vert.play("idle")
 	elif abs(target_ratio - progress_ratio) < 0.05 and value_entered:
 		mus_vert.stop()
 		if time_ver_flag != true:

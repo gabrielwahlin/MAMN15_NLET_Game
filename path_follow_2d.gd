@@ -80,9 +80,9 @@ func _ready():
 		try_again_button.pressed.connect(reset_scene)
 
 	# Set up the AnimatedSprite2D
-	mus.animation = "new_animation"  # Replace with the name of your animation in SpriteFrames
+	mus.animation = "idle"  # Replace with the name of your animation in SpriteFrames
 	mus.play()  # Start animation
-	mus_vert.animation = "new_animation"
+	mus_vert.animation = "idle"
 	mus_vert.play()
 
 # Function to handle input submission

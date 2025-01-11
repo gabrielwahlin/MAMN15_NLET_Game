@@ -159,7 +159,7 @@ func _process(delta: float) -> void:
 	if vertical_path.visible:  # Check if we're on the vertical path
 		if abs(progress_ratio - target_ratio) > 0.01:  # If moving vertically
 			if not mus_vert.is_playing():
-				mus_vert.play("new_animation")
+				mus_vert.play("idle")
 		else:
 			mus_vert.stop()  # Stop the vertical animation when the target is reached
 
