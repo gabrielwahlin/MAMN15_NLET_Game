@@ -13,7 +13,8 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	transition.play("fade_out")
+	get_tree().change_scene_to_file("res://bounded_spatial_or_not.tscn")
+	#transition.play("fade_out")
 	
 
 
@@ -22,7 +23,7 @@ func _on_button_2_pressed() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://bounded_spatial_or_not.tscn")
 
 
 func _on_button_3_pressed() -> void:
