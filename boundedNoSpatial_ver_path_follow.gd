@@ -6,15 +6,15 @@ extends PathFollow2D
 @onready var new_game_button = win_popup_panel.get_node("Button")
 @onready var popup_panel = $"../CanvasLayer2/Popup"
 @onready var try_again_button = popup_panel.get_node("Button")
-@onready var start_pointer_hor = $"/root/Game/StartPointerHor"
-@onready var end_pointer_hor = $"/root/Game/EndPointerHor"
-@onready var start_pointer_ver = $"/root/Game/StartPointerVer"
-@onready var end_pointer_ver = $"/root/Game/EndPointerVer"
-@onready var horizontal_path = $"/root/Game/HorizontalPath"
-@onready var vertical_path = $"/root/Game/VerticalPath"
-@onready var rep = $/root/Game/VerticalPath/rep
-@onready var hor_path_follow = $"/root/Game/HorizontalPath/HorPathFollow"
-@onready var mus_vert = $"/root/Game/VerticalPath/VerPathFollow/Sprite2D"
+@onready var start_pointer_hor = $"../../StartPointerHor"
+@onready var end_pointer_hor = $"../../EndPointerHor"
+@onready var start_pointer_ver = $"../../StartPointerVer"
+@onready var end_pointer_ver = $"../../EndPointerVer"
+@onready var horizontal_path = $"../../HorizontalPath"
+@onready var vertical_path = $"../../VerticalPath"
+@onready var rep = $"../rep"
+@onready var hor_path_follow = $"../../HorizontalPath/HorPathFollow"
+@onready var mus_vert = $"../../VerticalPath/VerPathFollow/Sprite2D"
 @onready var celebration = $"../../celebr"
 
 var target_ratio: float = 0.0

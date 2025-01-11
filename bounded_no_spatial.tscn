@@ -1,50 +1,50 @@
-[gd_scene load_steps=35 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=35 format=3 uid="uid://b3tinkjy0mk1c"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_hslol"]
-[ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
-[ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="1_r8jgq"]
-[ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="1_w780e"]
-[ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="4_fjnxe"]
-[ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="5_qor7s"]
-[ext_resource type="Texture2D" uid="uid://cxi206plx3pf0" path="res://spik.png" id="6_lghqe"]
-[ext_resource type="Script" path="res://path_follow_2d.gd" id="6_rnyo1"]
-[ext_resource type="Script" path="res://ver_path_follow.gd" id="7_0s5oc"]
-[ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="7_xksbp"]
-[ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="8_a1t0e"]
-[ext_resource type="Texture2D" uid="uid://3fytpv62vfmp" path="res://sprites/Tallinje.png" id="9_jxnq6"]
-[ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
-[ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
-[ext_resource type="Texture2D" uid="uid://cq6uuljhyvl8b" path="res://Tallinje.png" id="11_8cyrh"]
-[ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
-[ext_resource type="PackedScene" uid="uid://dj6ty5bt6ep40" path="res://pause_menu.tscn" id="15_c17is"]
-[ext_resource type="AudioStream" uid="uid://0qjr228ogova" path="res://sprites/Celebration Sound Effect.mp3" id="18_rvloi"]
+[ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_3gdrn"]
+[ext_resource type="Script" path="res://Main_bounded_no_spatial.gd" id="1_b6neh"]
+[ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="2_skfoq"]
+[ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="3_rlseq"]
+[ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="4_isn0k"]
+[ext_resource type="Script" path="res://boundedNoSpatial_hor_path_follow.gd" id="5_2ibwn"]
+[ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="6_8pq2t"]
+[ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="7_xpta0"]
+[ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="8_ceoq0"]
+[ext_resource type="Texture2D" uid="uid://3fytpv62vfmp" path="res://sprites/Tallinje.png" id="9_w4w4l"]
+[ext_resource type="Texture2D" uid="uid://cq6uuljhyvl8b" path="res://Tallinje.png" id="10_pin6e"]
+[ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="11_f7u0r"]
+[ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="12_pswts"]
+[ext_resource type="Script" path="res://boundedNoSpatial_ver_path_follow.gd" id="13_jrudf"]
+[ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="14_c1xlf"]
+[ext_resource type="Texture2D" uid="uid://cxi206plx3pf0" path="res://spik.png" id="15_whkla"]
+[ext_resource type="PackedScene" uid="uid://dj6ty5bt6ep40" path="res://pause_menu.tscn" id="16_utgq6"]
+[ext_resource type="AudioStream" uid="uid://0qjr228ogova" path="res://sprites/Celebration Sound Effect.mp3" id="17_ss655"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dgmfv"]
 distance = -504.0
 
-[sub_resource type="Curve2D" id="Curve2D_tixmx"]
+[sub_resource type="Curve2D" id="Curve2D_e2vo7"]
 _data = {
 "points": PackedVector2Array(-65.1783, 0, 0, 0, 122, 502, 0, 0, 0, 0, 1986.9, 502.075)
 }
 point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6po12"]
-atlas = ExtResource("8_a1t0e")
+atlas = ExtResource("7_xpta0")
 region = Rect2(0, 0, 85, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cuh0a"]
-atlas = ExtResource("8_a1t0e")
+atlas = ExtResource("7_xpta0")
 region = Rect2(85, 0, 85, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eswe7"]
-atlas = ExtResource("7_xksbp")
+atlas = ExtResource("8_ceoq0")
 region = Rect2(0, 0, 160, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lpxl"]
-atlas = ExtResource("7_xksbp")
+atlas = ExtResource("8_ceoq0")
 region = Rect2(160, 0, 160, 90)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1n3rh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbp5m"]
 animations = [{
 "frames": [{
 "duration": 3.0,
@@ -69,29 +69,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Curve2D" id="Curve2D_prc7j"]
+[sub_resource type="Curve2D" id="Curve2D_2jlm7"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -221, 832, 0, 0, 0, 0, -221, -20)
 }
 point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frh0l"]
-atlas = ExtResource("8_a1t0e")
+atlas = ExtResource("7_xpta0")
 region = Rect2(0, 0, 85, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrlv4"]
-atlas = ExtResource("8_a1t0e")
+atlas = ExtResource("7_xpta0")
 region = Rect2(85, 0, 85, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ci6hv"]
-atlas = ExtResource("7_xksbp")
+atlas = ExtResource("8_ceoq0")
 region = Rect2(0, 0, 160, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4p83g"]
-atlas = ExtResource("7_xksbp")
+atlas = ExtResource("8_ceoq0")
 region = Rect2(160, 0, 160, 90)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dftut"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ju2vs"]
 animations = [{
 "frames": [{
 "duration": 3.0,
@@ -176,24 +176,24 @@ _data = {
 "fade_in": SubResource("Animation_8j4p5")
 }
 
-[node name="Game" type="Node2D"]
-script = ExtResource("1_hslol")
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_b6neh")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(960, 752)
 scale = Vector2(1, 1.4)
-texture = ExtResource("1_nlpad")
+texture = ExtResource("1_3gdrn")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="TestLevel" parent="." instance=ExtResource("1_w780e")]
+[node name="TestLevel" parent="." instance=ExtResource("2_skfoq")]
 visible = false
 position = Vector2(-10, -11)
 scale = Vector2(1.025, 1.025)
 
-[node name="Player" parent="TestLevel" instance=ExtResource("1_r8jgq")]
+[node name="Player" parent="TestLevel" instance=ExtResource("3_rlseq")]
 visible = false
 position = Vector2(268, 450)
 scale = Vector2(0.33, 0.33)
@@ -201,9 +201,9 @@ scale = Vector2(0.33, 0.33)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_tx2w5")
+shape = SubResource("WorldBoundaryShape2D_dgmfv")
 
-[node name="StartPointerHor" parent="." instance=ExtResource("5_qor7s")]
+[node name="StartPointerHor" parent="." instance=ExtResource("4_isn0k")]
 position = Vector2(450, 891)
 scale = Vector2(3, 3)
 
@@ -215,7 +215,7 @@ offset_bottom = 40.6667
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="EndPointerHor" parent="." instance=ExtResource("5_qor7s")]
+[node name="EndPointerHor" parent="." instance=ExtResource("4_isn0k")]
 position = Vector2(1297, 893)
 scale = Vector2(3, 3)
 
@@ -228,7 +228,7 @@ offset_bottom = 38.3333
 text = "100"
 metadata/_edit_use_anchors_ = true
 
-[node name="EndPointerVer" parent="." instance=ExtResource("5_qor7s")]
+[node name="EndPointerVer" parent="." instance=ExtResource("4_isn0k")]
 visible = false
 position = Vector2(1367, 44)
 rotation = 1.5708
@@ -242,7 +242,7 @@ offset_bottom = 11.6667
 rotation = 4.71239
 text = "100"
 
-[node name="StartPointerVer" parent="." instance=ExtResource("5_qor7s")]
+[node name="StartPointerVer" parent="." instance=ExtResource("4_isn0k")]
 visible = false
 position = Vector2(1367, 879)
 rotation = 1.5708
@@ -259,20 +259,20 @@ text = "0"
 [node name="HorizontalPath" type="Path2D" parent="."]
 position = Vector2(396, 571)
 scale = Vector2(0.458, 0.723)
-curve = SubResource("Curve2D_tixmx")
+curve = SubResource("Curve2D_e2vo7")
 
 [node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
 position = Vector2(122, 502)
 rotation = 4.02232e-05
 loop = false
-script = ExtResource("6_rnyo1")
+script = ExtResource("5_2ibwn")
 
 [node name="GammalSprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
 visible = false
 position = Vector2(-242.9, -94.259)
 rotation = 0.00110497
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_fjnxe")
+texture = ExtResource("6_8pq2t")
 centered = false
 offset = Vector2(50, 0)
 
@@ -280,9 +280,8 @@ offset = Vector2(50, 0)
 z_index = 2
 position = Vector2(-120.424, -2)
 scale = Vector2(3.55, 2.71)
-sprite_frames = SubResource("SpriteFrames_1n3rh")
+sprite_frames = SubResource("SpriteFrames_bbp5m")
 animation = &"idle"
-frame_progress = 0.15763
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HorizontalPath"]
 
@@ -335,12 +334,12 @@ text = "Restart"
 visible = false
 position = Vector2(770.742, 589.212)
 scale = Vector2(5, 5)
-texture = ExtResource("9_jxnq6")
+texture = ExtResource("9_w4w4l")
 
 [node name="VerticalPath" type="Path2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1523, 60)
-curve = SubResource("Curve2D_prc7j")
+curve = SubResource("Curve2D_2jlm7")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
 
@@ -355,6 +354,7 @@ alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="WinPopup" type="Popup" parent="VerticalPath/CanvasLayer2"]
+auto_translate_mode = 1
 position = Vector2i(30, 100)
 size = Vector2i(370, 101)
 visible = true
@@ -384,6 +384,7 @@ text = "Du är såå duktig! Musen fick sin ost :)"
 horizontal_alignment = 1
 
 [node name="Popup" type="Popup" parent="VerticalPath/CanvasLayer2"]
+auto_translate_mode = 1
 position = Vector2i(30, 100)
 size = Vector2i(370, 101)
 visible = true
@@ -415,41 +416,41 @@ text = "Restart"
 [node name="Tallinje" type="Sprite2D" parent="VerticalPath"]
 position = Vector2(-640.912, 874.125)
 scale = Vector2(8.838, 4)
-texture = ExtResource("11_8cyrh")
+texture = ExtResource("10_pin6e")
 
 [node name="rep" type="Sprite2D" parent="VerticalPath"]
 modulate = Color(1, 1, 1, 0.4)
 position = Vector2(-221.004, 382)
 rotation = -0.00120914
 scale = Vector2(9, 14.43)
-texture = ExtResource("9_xxwdj")
+texture = ExtResource("11_f7u0r")
 
 [node name="ost" type="Sprite2D" parent="VerticalPath"]
 visible = false
 position = Vector2(-221.004, 452.004)
 rotation = -0.00120914
 scale = Vector2(3, 3)
-texture = ExtResource("9_lpmrk")
+texture = ExtResource("12_pswts")
 
 [node name="Xost" type="Sprite2D" parent="VerticalPath"]
 position = Vector2(-430, 850)
 rotation = -0.00241828
 scale = Vector2(3, 3)
-texture = ExtResource("9_lpmrk")
+texture = ExtResource("12_pswts")
 
 [node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]
 unique_name_in_owner = true
 position = Vector2(-221, 832)
 rotation = -1.5708
 loop = false
-script = ExtResource("7_0s5oc")
+script = ExtResource("13_jrudf")
 
 [node name="GammalSprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
 visible = false
 position = Vector2(-261.893, -91.3209)
 rotation = 0.00110497
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_fjnxe")
+texture = ExtResource("6_8pq2t")
 centered = false
 offset = Vector2(50, 0)
 
@@ -457,39 +458,40 @@ offset = Vector2(50, 0)
 visible = false
 position = Vector2(-65, -42.155)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_dftut")
+sprite_frames = SubResource("SpriteFrames_ju2vs")
 animation = &"idle"
 
 [node name="spikar" type="Node2D" parent="."]
+visible = false
 position = Vector2(623, 894)
 scale = Vector2(0.75, 0.75)
 
 [node name="Spik3" type="Sprite2D" parent="spikar"]
 position = Vector2(55, 107.999)
-texture = ExtResource("12_x4iky")
+texture = ExtResource("14_c1xlf")
 
 [node name="Spik2" type="Sprite2D" parent="spikar"]
 position = Vector2(340, 106.667)
-texture = ExtResource("12_x4iky")
+texture = ExtResource("14_c1xlf")
 
 [node name="Spik4" type="Sprite2D" parent="spikar"]
 position = Vector2(625, 105.333)
-texture = ExtResource("12_x4iky")
+texture = ExtResource("14_c1xlf")
 
 [node name="Spiky" type="Sprite2D" parent="spikar"]
 position = Vector2(994.663, -570.333)
 scale = Vector2(1.33333, 1.33333)
-texture = ExtResource("6_lghqe")
+texture = ExtResource("15_whkla")
 
 [node name="Spiky2" type="Sprite2D" parent="spikar"]
 position = Vector2(995.993, -287.334)
 scale = Vector2(1.33333, 1.33333)
-texture = ExtResource("6_lghqe")
+texture = ExtResource("15_whkla")
 
 [node name="Spiky3" type="Sprite2D" parent="spikar"]
 position = Vector2(994.663, -855.667)
 scale = Vector2(1.33333, 1.33333)
-texture = ExtResource("6_lghqe")
+texture = ExtResource("15_whkla")
 
 [node name="fönster" type="Sprite2D" parent="."]
 position = Vector2(1552, 376)
@@ -506,7 +508,7 @@ offset_bottom = 1114.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("15_c17is")]
+[node name="PauseMenu" parent="." instance=ExtResource("16_utgq6")]
 visible = false
 offset_left = 847.0
 offset_top = 406.0
@@ -515,5 +517,5 @@ offset_bottom = 406.0
 scale = Vector2(3, 3)
 
 [node name="celebr" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("18_rvloi")
+stream = ExtResource("17_ss655")
 volume_db = -0.05

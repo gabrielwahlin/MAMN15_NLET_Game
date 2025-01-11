@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c272srj508abq"]
+[gd_scene load_steps=13 format=3 uid="uid://c272srj508abq"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_64kaa"]
-[ext_resource type="Texture2D" uid="uid://cuj2h1g4j6imu" path="res://sprites/startmeny placeholder2.png" id="2_scvci"]
+[ext_resource type="Texture2D" uid="uid://bm4ji7if1f7tk" path="res://sprites/ratgame no mouse.png" id="2_c5pf1"]
 [ext_resource type="Script" path="res://animation_player.gd" id="3_6h74t"]
+[ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="4_a2h81"]
 
 [sub_resource type="Theme" id="Theme_rm1g1"]
 
@@ -94,6 +95,28 @@ _data = {
 "fade_out": SubResource("Animation_ufrk0")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cjc1"]
+atlas = ExtResource("4_a2h81")
+region = Rect2(0, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpqnm"]
+atlas = ExtResource("4_a2h81")
+region = Rect2(85, 0, 85, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq0q0"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7cjc1")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wpqnm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -106,7 +129,7 @@ script = ExtResource("1_64kaa")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960.222, 543)
 scale = Vector2(9.98148, 9.98148)
-texture = ExtResource("2_scvci")
+texture = ExtResource("2_c5pf1")
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
@@ -147,6 +170,15 @@ visible = false
 offset_right = 1934.0
 offset_bottom = 1091.0
 color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(884, 547)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_wq0q0")
+frame = 1
+frame_progress = 0.597224
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
