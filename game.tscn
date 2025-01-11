@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=34 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hslol"]
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://3fytpv62vfmp" path="res://sprites/Tallinje.png" id="9_jxnq6"]
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="9_lpmrk"]
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
+[ext_resource type="Texture2D" uid="uid://cq6uuljhyvl8b" path="res://Tallinje.png" id="11_8cyrh"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
 [ext_resource type="PackedScene" path="res://pause_menu.tscn" id="15_c17is"]
 
@@ -386,7 +387,13 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
 
+[node name="Tallinje" type="Sprite2D" parent="VerticalPath"]
+position = Vector2(-640.912, 874.125)
+scale = Vector2(8.838, 4)
+texture = ExtResource("11_8cyrh")
+
 [node name="rep" type="Sprite2D" parent="VerticalPath"]
+modulate = Color(1, 1, 1, 0.4)
 position = Vector2(-221.004, 382)
 rotation = -0.00120914
 scale = Vector2(9, 14.43)
@@ -400,7 +407,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("9_lpmrk")
 
 [node name="Xost" type="Sprite2D" parent="VerticalPath"]
-position = Vector2(-222, 850)
+position = Vector2(-430, 850)
 rotation = -0.00241828
 scale = Vector2(3, 3)
 texture = ExtResource("9_lpmrk")

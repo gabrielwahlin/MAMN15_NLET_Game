@@ -17,6 +17,7 @@ extends PathFollow2D
 @onready var line_edit_ver = $"/root/Game/VerticalPath/CanvasLayer2/LineEdit"
 @onready var spritever = $"/root/Game/VerticalPath/VerPathFollow/Sprite2D"
 @onready var rep = $/root/Game/VerticalPath/rep
+@onready var tallinje = $/root/Game/VerticalPath/Tallinje
 @onready var mus = $/root/Game/HorizontalPath/HorPathFollow/Sprite2D
 @onready var mus_vert = $/root/Game/VerticalPath/VerPathFollow/Sprite2D
 @onready var ost = $/root/Game/VerticalPath/ost
@@ -174,6 +175,9 @@ func correct_hor():
 	end_number_hor.visible = false
 	x_ost.visible = false
 	ost.visible = true
+	rep.modulate.a = 1
+	tallinje.modulate.a = 0.2
+	
 	# Show the vertical path pointers and numbers
 	start_pointer_ver.visible = true
 	end_pointer_ver.visible = true
