@@ -50,11 +50,12 @@ func round_to(value: float, decimals: int) -> float:
 func _ready():
 	targetnumber_hor = round_to(rng.randf_range(0.0, 1.0), 2)
 	targetnumber_ver = round_to(rng.randf_range(0.0, 1.0), 2)
+	targetnumber_ver = 1
 	# Set the positions of elements on the horizontal and vertical paths
 	#rep.position.x = targetnumber_hor * 835 - 1225
 	#mus_vert.position.y = targetnumber_hor * 835 - 1040
-	x_ost.position.x = targetnumber_hor * 835 - 1050
-	ost.position.y = targetnumber_ver * -800 + 815
+	x_ost.position.x = targetnumber_hor * 855 - 1070
+	ost.position.y = targetnumber_ver * -855 + 830
 	#end_pointer_ver.position.x = targetnumber_hor * 750 + 575
 	#start_pointer_ver.position.x = targetnumber_hor * 750 + 575
 	

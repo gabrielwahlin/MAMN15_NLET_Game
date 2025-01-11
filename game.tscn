@@ -23,9 +23,9 @@ distance = -504.0
 
 [sub_resource type="Curve2D" id="Curve2D_tixmx"]
 _data = {
-"points": PackedVector2Array(-65.1783, 0, 65.1783, 0, 122, 502, 0, 0, 0, 0, 1176.37, 505.518, 0, 0, 0, 0, 2056.77, 504.841)
+"points": PackedVector2Array(-65.1783, 0, 0, 0, 122, 502, 0, 0, 0, 0, 1986.9, 502.075)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6po12"]
 atlas = ExtResource("8_a1t0e")
@@ -70,7 +70,7 @@ animations = [{
 
 [sub_resource type="Curve2D" id="Curve2D_prc7j"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -224, 822.001, 0, 0, 0, 0, -225, -4.99964)
+"points": PackedVector2Array(0, 0, 0, 0, -221, 832, 0, 0, 0, 0, -221, -20)
 }
 point_count = 2
 
@@ -182,6 +182,7 @@ script = ExtResource("1_hslol")
 position = Vector2(960, 752)
 scale = Vector2(1, 1.4)
 texture = ExtResource("1_nlpad")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -228,7 +229,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EndPointerVer" parent="." instance=ExtResource("5_qor7s")]
 visible = false
-position = Vector2(1367, 59)
+position = Vector2(1367, 44)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
@@ -261,6 +262,7 @@ curve = SubResource("Curve2D_tixmx")
 
 [node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
 position = Vector2(122, 502)
+rotation = 4.00595e-05
 loop = false
 script = ExtResource("6_rnyo1")
 
@@ -414,8 +416,8 @@ texture = ExtResource("9_lpmrk")
 
 [node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]
 unique_name_in_owner = true
-position = Vector2(-224, 822.001)
-rotation = -1.57201
+position = Vector2(-221, 832)
+rotation = -1.5708
 loop = false
 script = ExtResource("7_0s5oc")
 
@@ -440,29 +442,29 @@ position = Vector2(623, 894)
 scale = Vector2(0.75, 0.75)
 
 [node name="Spik3" type="Sprite2D" parent="spikar"]
-position = Vector2(66, 86.666)
+position = Vector2(55, 107.999)
 texture = ExtResource("12_x4iky")
 
 [node name="Spik2" type="Sprite2D" parent="spikar"]
-position = Vector2(358, 85.333)
+position = Vector2(340, 106.667)
 texture = ExtResource("12_x4iky")
 
 [node name="Spik4" type="Sprite2D" parent="spikar"]
-position = Vector2(655.666, 84)
+position = Vector2(625, 105.333)
 texture = ExtResource("12_x4iky")
 
 [node name="Spiky" type="Sprite2D" parent="spikar"]
-position = Vector2(994.663, -596.333)
+position = Vector2(994.663, -570.333)
 scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
 [node name="Spiky2" type="Sprite2D" parent="spikar"]
-position = Vector2(995.993, -301.334)
+position = Vector2(995.993, -287.334)
 scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
 [node name="Spiky3" type="Sprite2D" parent="spikar"]
-position = Vector2(994.663, -900.667)
+position = Vector2(994.663, -855.667)
 scale = Vector2(1.33333, 1.33333)
 texture = ExtResource("6_lghqe")
 
