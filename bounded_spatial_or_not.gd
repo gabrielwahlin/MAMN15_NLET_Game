@@ -25,3 +25,7 @@ func _on_no_spatial_pressed() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
 		get_tree().change_scene_to_file(target_scene)
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("StartMenu.tscn")

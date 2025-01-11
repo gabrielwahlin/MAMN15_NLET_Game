@@ -199,24 +199,6 @@ position = Vector2(960.222, 543)
 scale = Vector2(9.981, 9.981)
 texture = ExtResource("2_kmp8s")
 
-[node name="Spatial" type="Button" parent="."]
-layout_mode = 0
-offset_left = 609.0
-offset_top = 893.0
-offset_right = 712.0
-offset_bottom = 924.0
-scale = Vector2(3, 3)
-text = "Spatial Cues"
-
-[node name="NoSpatial" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1001.0
-offset_top = 894.0
-offset_right = 1130.0
-offset_bottom = 925.0
-scale = Vector2(3, 3)
-text = "No Spatial Cues"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_u833m")
@@ -263,6 +245,34 @@ libraries = {
 }
 speed_scale = 0.25
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 119.0
+offset_bottom = 81.0
+scale = Vector2(3, 3)
+text = "Tillbaka"
+
+[node name="Spatial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 893.0
+offset_right = 712.0
+offset_bottom = 924.0
+scale = Vector2(3, 3)
+text = "Spatial Cues"
+
+[node name="NoSpatial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1001.0
+offset_top = 894.0
+offset_right = 1130.0
+offset_bottom = 925.0
+scale = Vector2(3, 3)
+text = "No Spatial Cues"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Spatial" to="." method="_on_spatial_pressed"]
 [connection signal="pressed" from="NoSpatial" to="." method="_on_no_spatial_pressed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
