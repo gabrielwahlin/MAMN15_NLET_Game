@@ -1,0 +1,522 @@
+[gd_scene load_steps=35 format=3 uid="uid://bdoclsxgdp1dg"]
+
+[ext_resource type="Script" path="res://Main_unbounded_spatial.gd" id="1_ehgks"]
+[ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="2_q5yhe"]
+[ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="3_p1a5k"]
+[ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="4_6mqnm"]
+[ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="5_hdw21"]
+[ext_resource type="Script" path="res://unboundedSpatial_hor_path_follow.gd" id="6_kjidb"]
+[ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="7_n20kq"]
+[ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="8_1stg7"]
+[ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="9_vc437"]
+[ext_resource type="Texture2D" uid="uid://3fytpv62vfmp" path="res://sprites/Tallinje.png" id="10_njxi2"]
+[ext_resource type="Texture2D" uid="uid://cq6uuljhyvl8b" path="res://Tallinje.png" id="11_5rcp7"]
+[ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="12_hf6yp"]
+[ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="13_n32ui"]
+[ext_resource type="Script" path="res://unboundedSpatial_ver_path_follow.gd" id="14_yrwn1"]
+[ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="15_vvyga"]
+[ext_resource type="Texture2D" uid="uid://cxi206plx3pf0" path="res://spik.png" id="16_u21vd"]
+[ext_resource type="PackedScene" uid="uid://dj6ty5bt6ep40" path="res://pause_menu.tscn" id="17_5os8e"]
+[ext_resource type="AudioStream" uid="uid://0qjr228ogova" path="res://sprites/Celebration Sound Effect.mp3" id="18_dag62"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ah8c"]
+distance = -504.0
+
+[sub_resource type="Curve2D" id="Curve2D_j4i5h"]
+_data = {
+"points": PackedVector2Array(-65.1783, 0, 0, 0, 122, 502, 0, 0, 0, 0, 1986.9, 502.075)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6po12"]
+atlas = ExtResource("8_1stg7")
+region = Rect2(0, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuh0a"]
+atlas = ExtResource("8_1stg7")
+region = Rect2(85, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eswe7"]
+atlas = ExtResource("9_vc437")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lpxl"]
+atlas = ExtResource("9_vc437")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1j81f"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_6po12")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_cuh0a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eswe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lpxl")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_d8a2w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -221, 832, 0, 0, 0, 0, -221, -20)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frh0l"]
+atlas = ExtResource("8_1stg7")
+region = Rect2(0, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrlv4"]
+atlas = ExtResource("8_1stg7")
+region = Rect2(85, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci6hv"]
+atlas = ExtResource("9_vc437")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p83g"]
+atlas = ExtResource("9_vc437")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bia0k"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_frh0l")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wrlv4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci6hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p83g")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_qemm3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8j4p5"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftryu"]
+_data = {
+"RESET": SubResource("Animation_qemm3"),
+"fade_in": SubResource("Animation_8j4p5")
+}
+
+[node name="unbounded_spatial" type="Node2D"]
+script = ExtResource("1_ehgks")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(960, 752)
+scale = Vector2(1, 1.4)
+texture = ExtResource("2_q5yhe")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="TestLevel" parent="." instance=ExtResource("3_p1a5k")]
+visible = false
+position = Vector2(-10, -11)
+scale = Vector2(1.025, 1.025)
+
+[node name="Player" parent="TestLevel" instance=ExtResource("4_6mqnm")]
+visible = false
+position = Vector2(268, 450)
+scale = Vector2(0.33, 0.33)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_8ah8c")
+
+[node name="StartPointerHor" parent="." instance=ExtResource("5_hdw21")]
+z_index = 2
+position = Vector2(450, 891)
+scale = Vector2(3, 3)
+
+[node name="StartNumberHor" type="Label" parent="StartPointerHor"]
+offset_left = -4.66667
+offset_top = 17.6667
+offset_right = 5.33333
+offset_bottom = 40.6667
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="EndPointerHor" parent="." instance=ExtResource("5_hdw21")]
+z_index = 2
+position = Vector2(530, 891)
+scale = Vector2(3, 3)
+
+[node name="EndNumberHor" type="Label" parent="EndPointerHor"]
+z_index = 1
+offset_left = -9.0
+offset_top = 18.0
+offset_right = 31.0
+offset_bottom = 41.0
+text = "10"
+metadata/_edit_use_anchors_ = true
+
+[node name="EndPointerVer" parent="." instance=ExtResource("5_hdw21")]
+visible = false
+position = Vector2(1367, 44)
+rotation = 1.5708
+scale = Vector2(3, 3)
+
+[node name="EndNumberVer" type="Label" parent="EndPointerVer"]
+offset_left = -12.3334
+offset_top = -11.3333
+offset_right = 27.6666
+offset_bottom = 11.6667
+rotation = 4.71239
+text = "100"
+
+[node name="StartPointerVer" parent="." instance=ExtResource("5_hdw21")]
+visible = false
+position = Vector2(1367, 879)
+rotation = 1.5708
+scale = Vector2(3, 3)
+
+[node name="StartNumberVer" type="Label" parent="StartPointerVer"]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 29.0
+offset_bottom = 12.0
+rotation = 4.71239
+text = "0"
+
+[node name="HorizontalPath" type="Path2D" parent="."]
+position = Vector2(396, 571)
+scale = Vector2(0.458, 0.723)
+curve = SubResource("Curve2D_j4i5h")
+
+[node name="HorPathFollow" type="PathFollow2D" parent="HorizontalPath"]
+position = Vector2(122, 502)
+rotation = 4.02232e-05
+loop = false
+script = ExtResource("6_kjidb")
+
+[node name="GammalSprite2D" type="Sprite2D" parent="HorizontalPath/HorPathFollow"]
+visible = false
+position = Vector2(-242.9, -94.259)
+rotation = 0.00110497
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_n20kq")
+centered = false
+offset = Vector2(50, 0)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="HorizontalPath/HorPathFollow"]
+z_index = 2
+position = Vector2(-120.424, -2)
+scale = Vector2(3.55, 2.71)
+sprite_frames = SubResource("SpriteFrames_1j81f")
+animation = &"idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HorizontalPath"]
+
+[node name="LineEdit" type="LineEdit" parent="HorizontalPath/CanvasLayer"]
+offset_left = 75.0
+offset_top = 243.0
+offset_right = 355.0
+offset_bottom = 333.0
+placeholder_text = "Skriv ett nummer mellan 0 och 100"
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="HorizontalPath/CanvasLayer"]
+visible = false
+offset_left = 532.0
+offset_top = 57.0
+offset_right = 594.0
+offset_bottom = 80.0
+text = "Correct!"
+
+[node name="Popup" type="Popup" parent="HorizontalPath/CanvasLayer"]
+auto_translate_mode = 1
+position = Vector2i(30, 100)
+size = Vector2i(370, 101)
+
+[node name="Label" type="Label" parent="HorizontalPath/CanvasLayer/Popup"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Unfortunately, this was wrong. Please try again!"
+
+[node name="Button" type="Button" parent="HorizontalPath/CanvasLayer/Popup"]
+custom_minimum_size = Vector2(50, 20)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
+
+[node name="Tallinje" type="Sprite2D" parent="HorizontalPath"]
+visible = false
+position = Vector2(770.742, 589.212)
+scale = Vector2(5, 5)
+texture = ExtResource("10_njxi2")
+
+[node name="VerticalPath" type="Path2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1523, 60)
+curve = SubResource("Curve2D_d8a2w")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="VerticalPath"]
+
+[node name="LineEdit" type="LineEdit" parent="VerticalPath/CanvasLayer2"]
+visible = false
+offset_left = 75.0
+offset_top = 243.0
+offset_right = 355.0
+offset_bottom = 333.0
+placeholder_text = "Skriv ett nummer mellan 0 och 100"
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WinPopup" type="Popup" parent="VerticalPath/CanvasLayer2"]
+auto_translate_mode = 1
+position = Vector2i(30, 100)
+size = Vector2i(370, 101)
+visible = true
+
+[node name="Button" type="Button" parent="VerticalPath/CanvasLayer2/WinPopup"]
+custom_minimum_size = Vector2(50, 20)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Nytt spel!"
+
+[node name="Label" type="Label" parent="VerticalPath/CanvasLayer2/WinPopup"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Du är såå duktig! Musen fick sin ost :)"
+horizontal_alignment = 1
+
+[node name="Popup" type="Popup" parent="VerticalPath/CanvasLayer2"]
+auto_translate_mode = 1
+position = Vector2i(30, 100)
+size = Vector2i(370, 101)
+visible = true
+
+[node name="Label" type="Label" parent="VerticalPath/CanvasLayer2/Popup"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Unfortunately, this was wrong. Please try again!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VerticalPath/CanvasLayer2/Popup"]
+custom_minimum_size = Vector2(50, 20)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
+
+[node name="Tallinje" type="Sprite2D" parent="VerticalPath"]
+position = Vector2(-640.912, 874.125)
+scale = Vector2(8.838, 4)
+texture = ExtResource("11_5rcp7")
+
+[node name="rep" type="Sprite2D" parent="VerticalPath"]
+modulate = Color(1, 1, 1, 0.4)
+position = Vector2(-221.004, 382)
+rotation = -0.00120914
+scale = Vector2(9, 14.43)
+texture = ExtResource("12_hf6yp")
+
+[node name="ost" type="Sprite2D" parent="VerticalPath"]
+visible = false
+position = Vector2(-221.004, 452.004)
+rotation = -0.00120914
+scale = Vector2(3, 3)
+texture = ExtResource("13_n32ui")
+
+[node name="Xost" type="Sprite2D" parent="VerticalPath"]
+position = Vector2(-430, 850)
+rotation = -0.00241828
+scale = Vector2(3, 3)
+texture = ExtResource("13_n32ui")
+
+[node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]
+unique_name_in_owner = true
+position = Vector2(-221, 832)
+rotation = -1.5708
+loop = false
+script = ExtResource("14_yrwn1")
+
+[node name="GammalSprite2D" type="Sprite2D" parent="VerticalPath/VerPathFollow"]
+visible = false
+position = Vector2(-261.893, -91.3209)
+rotation = 0.00110497
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_n20kq")
+centered = false
+offset = Vector2(50, 0)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="VerticalPath/VerPathFollow"]
+visible = false
+position = Vector2(-65, -42.155)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bia0k")
+animation = &"idle"
+
+[node name="spikar" type="Node2D" parent="."]
+position = Vector2(623, 894)
+scale = Vector2(0.75, 0.75)
+
+[node name="Spik3" type="Sprite2D" parent="spikar"]
+position = Vector2(55, 107.999)
+texture = ExtResource("15_vvyga")
+
+[node name="Spik2" type="Sprite2D" parent="spikar"]
+position = Vector2(340, 106.667)
+texture = ExtResource("15_vvyga")
+
+[node name="Spik4" type="Sprite2D" parent="spikar"]
+position = Vector2(625, 105.333)
+texture = ExtResource("15_vvyga")
+
+[node name="Spiky" type="Sprite2D" parent="spikar"]
+position = Vector2(994.663, -570.333)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("16_u21vd")
+
+[node name="Spiky2" type="Sprite2D" parent="spikar"]
+position = Vector2(995.993, -287.334)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("16_u21vd")
+
+[node name="Spiky3" type="Sprite2D" parent="spikar"]
+position = Vector2(994.663, -855.667)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("16_u21vd")
+
+[node name="fönster" type="Sprite2D" parent="."]
+position = Vector2(1552, 376)
+scale = Vector2(12, 12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ftryu")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+offset_right = 1946.0
+offset_bottom = 1114.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_5os8e")]
+visible = false
+offset_left = 847.0
+offset_top = 406.0
+offset_right = 847.0
+offset_bottom = 406.0
+scale = Vector2(3, 3)
+
+[node name="celebr" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_dag62")
+volume_db = -0.05

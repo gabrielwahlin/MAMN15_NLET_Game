@@ -1,6 +1,119 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3652k2nm6uin"]
+[gd_scene load_steps=12 format=3 uid="uid://b3652k2nm6uin"]
 
-[ext_resource type="Texture2D" uid="uid://cuj2h1g4j6imu" path="res://sprites/startmeny placeholder2.png" id="1_2cgvq"]
+[ext_resource type="Script" path="res://unbounded_spatial_or_not.gd" id="1_n0lof"]
+[ext_resource type="Texture2D" uid="uid://bm4ji7if1f7tk" path="res://sprites/ratgame no mouse.png" id="2_hdkjj"]
+[ext_resource type="Script" path="res://animation_player.gd" id="3_dhy1q"]
+[ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="4_f0o8e"]
+
+[sub_resource type="Animation" id="Animation_5aigl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3f084"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ufrk0"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u833m"]
+_data = {
+"RESET": SubResource("Animation_5aigl"),
+"fade_in": SubResource("Animation_3f084"),
+"fade_out": SubResource("Animation_ufrk0")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cjc1"]
+atlas = ExtResource("4_f0o8e")
+region = Rect2(0, 0, 85, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpqnm"]
+atlas = ExtResource("4_f0o8e")
+region = Rect2(85, 0, 85, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j5wq8"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7cjc1")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wpqnm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Unbounded_Spatial_Or_Not" type="Control"]
 layout_mode = 3
@@ -9,13 +122,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n0lof")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960.222, 543)
 scale = Vector2(9.981, 9.981)
-texture = ExtResource("1_2cgvq")
+texture = ExtResource("2_hdkjj")
 
-[node name="Button" type="Button" parent="."]
+[node name="Spatial" type="Button" parent="."]
+layout_mode = 0
 offset_left = 609.0
 offset_top = 893.0
 offset_right = 712.0
@@ -23,10 +138,35 @@ offset_bottom = 924.0
 scale = Vector2(3, 3)
 text = "Spatial Cues"
 
-[node name="Button2" type="Button" parent="."]
+[node name="NoSpatial" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1001.0
 offset_top = 894.0
 offset_right = 1130.0
 offset_bottom = 925.0
 scale = Vector2(3, 3)
 text = "No Spatial Cues"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u833m")
+}
+script = ExtResource("3_dhy1q")
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+visible = false
+offset_right = 1934.0
+offset_bottom = 1091.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(884, 547)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_j5wq8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+
+[connection signal="pressed" from="Spatial" to="." method="_on_spatial_pressed"]
+[connection signal="pressed" from="NoSpatial" to="." method="_on_no_spatial_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
