@@ -1,9 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://bdoclsxgdp1dg"]
+[gd_scene load_steps=37 format=3 uid="uid://bdoclsxgdp1dg"]
 
 [ext_resource type="Script" path="res://Main_unbounded_spatial.gd" id="1_ehgks"]
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="2_q5yhe"]
 [ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="3_p1a5k"]
+[ext_resource type="Texture2D" uid="uid://d77j7qtscl7e" path="res://sprites/bokhylla_new.png" id="3_rtmva"]
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="4_6mqnm"]
+[ext_resource type="Texture2D" uid="uid://2w3k3ht7yra" path="res://sprites/fönster.png" id="4_vo4sc"]
 [ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="5_hdw21"]
 [ext_resource type="Script" path="res://unboundedSpatial_hor_path_follow.gd" id="6_kjidb"]
 [ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="7_n20kq"]
@@ -179,11 +181,21 @@ _data = {
 [node name="unbounded_spatial" type="Node2D"]
 script = ExtResource("1_ehgks")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Bakgrund" type="Sprite2D" parent="."]
 position = Vector2(960, 752)
 scale = Vector2(1, 1.4)
 texture = ExtResource("2_q5yhe")
 metadata/_edit_lock_ = true
+
+[node name="Bokhylla" type="Sprite2D" parent="."]
+position = Vector2(1683, 653)
+scale = Vector2(10, 10)
+texture = ExtResource("3_rtmva")
+
+[node name="Fönster" type="Sprite2D" parent="."]
+position = Vector2(476, 353)
+scale = Vector2(10, 10)
+texture = ExtResource("4_vo4sc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -288,10 +300,11 @@ animation = &"idle"
 [node name="CanvasLayer" type="CanvasLayer" parent="HorizontalPath"]
 
 [node name="LineEdit" type="LineEdit" parent="HorizontalPath/CanvasLayer"]
-offset_left = 75.0
-offset_top = 243.0
-offset_right = 355.0
-offset_bottom = 333.0
+offset_left = 779.0
+offset_top = 400.0
+offset_right = 1059.0
+offset_bottom = 490.0
+scale = Vector2(1.5, 1.5)
 placeholder_text = "Skriv ett nummer mellan 0 och 100"
 alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -347,10 +360,11 @@ curve = SubResource("Curve2D_d8a2w")
 
 [node name="LineEdit" type="LineEdit" parent="VerticalPath/CanvasLayer2"]
 visible = false
-offset_left = 75.0
-offset_top = 243.0
-offset_right = 355.0
-offset_bottom = 333.0
+offset_left = 779.0
+offset_top = 400.0
+offset_right = 1059.0
+offset_bottom = 490.0
+scale = Vector2(1.5, 1.5)
 placeholder_text = "Skriv ett nummer mellan 0 och 100"
 alignment = 1
 metadata/_edit_use_anchors_ = true
