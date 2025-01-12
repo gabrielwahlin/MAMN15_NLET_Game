@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b3tinkjy0mk1c"]
+[gd_scene load_steps=39 format=3 uid="uid://c37hrqephqkfc"]
 
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_3gdrn"]
 [ext_resource type="Script" path="res://Main_bounded_no_spatial.gd" id="1_b6neh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="12_pswts"]
 [ext_resource type="Script" path="res://boundedNoSpatial_ver_path_follow.gd" id="13_jrudf"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="14_c1xlf"]
+[ext_resource type="Texture2D" uid="uid://c1x20v15od0dh" path="res://Mus_dancing.png" id="15_8wohf"]
 [ext_resource type="Texture2D" uid="uid://cxi206plx3pf0" path="res://spik.png" id="15_whkla"]
 [ext_resource type="PackedScene" path="res://pause_menu.tscn" id="16_utgq6"]
 [ext_resource type="AudioStream" uid="uid://0qjr228ogova" path="res://sprites/Celebration Sound Effect.mp3" id="17_ss655"]
@@ -75,6 +76,18 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehrrf"]
+atlas = ExtResource("15_8wohf")
+region = Rect2(0, 0, 95, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjg0l"]
+atlas = ExtResource("15_8wohf")
+region = Rect2(95, 0, 95, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sprwt"]
+atlas = ExtResource("15_8wohf")
+region = Rect2(190, 0, 95, 50)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_frh0l"]
 atlas = ExtResource("7_xpta0")
 region = Rect2(0, 0, 85, 39)
@@ -93,6 +106,20 @@ region = Rect2(160, 0, 160, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ju2vs"]
 animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_ehrrf")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_pjg0l")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_sprwt")
+}],
+"loop": true,
+"name": &"dancing",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 3.0,
 "texture": SubResource("AtlasTexture_frh0l")
@@ -459,7 +486,7 @@ visible = false
 position = Vector2(-65, -42.155)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ju2vs")
-animation = &"idle"
+animation = &"dancing"
 
 [node name="spikar" type="Node2D" parent="."]
 visible = false

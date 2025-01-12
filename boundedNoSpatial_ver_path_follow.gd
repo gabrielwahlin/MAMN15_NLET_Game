@@ -26,6 +26,7 @@ var value_entered: bool = false
 var is_moving: bool = false
 var elapsed_time_ver: float = 0.0
 var time_ver_flag: bool = false
+var celebration_flag: bool = false
 
 # Round function to limit decimals
 func round_to(value: float, decimals: int) -> float:
@@ -78,6 +79,8 @@ func _on_text_submitted(text: String) -> void:
 
 # The main game loop
 func _process(delta: float) -> void:
+	if not play_ani:
+		mus_vert.play("idle")
 	# Smoothly update the progress ratio only when the player input is valid
 	elapsed_time_ver += delta
 	if progress_ratio < target_ratio:
@@ -87,7 +90,8 @@ func _process(delta: float) -> void:
 			play_ani = true
 			mus_vert.play("new_animation")
 	elif abs(target_ratio - progress_ratio) < 0.05 and value_entered:
-		mus_vert.stop()
+		if not celebration_flag:
+			mus_vert.stop()
 		
 		
 	# Check if the target has been reached and update UI accordingly
@@ -95,6 +99,8 @@ func _process(delta: float) -> void:
 		if abs(targetnumber_ver - target_ratio) <= 0.051:
 			if not celebration.is_playing():
 				celebration.play()
+			mus_vert.play("dancing")
+			celebration_flag = true
 			correct_ver()
 			popup_panel.visible = false
 			is_moving = false
@@ -111,14 +117,6 @@ func _process(delta: float) -> void:
 		#is_moving = false
 		if popup_panel != null and popup_panel.visible:
 			popup_panel.visible = false
-
-	# Vertical animation logic
-	if vertical_path.visible:  # Check if we're on the vertical path
-		if abs(progress_ratio - target_ratio) > 0.01:  # If moving vertically
-			if not mus_vert.is_playing():
-				mus_vert.play("new_animation")
-		else:
-			mus_vert.stop()  # Stop the vertical animation when the target is reached
 
 # Function to handle the correct vertical path condition
 func correct_ver():
