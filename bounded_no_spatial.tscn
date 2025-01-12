@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://boundedNoSpatial_ver_path_follow.gd" id="13_jrudf"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="14_c1xlf"]
 [ext_resource type="Texture2D" uid="uid://cxi206plx3pf0" path="res://spik.png" id="15_whkla"]
-[ext_resource type="PackedScene" uid="uid://dj6ty5bt6ep40" path="res://pause_menu.tscn" id="16_utgq6"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="16_utgq6"]
 [ext_resource type="AudioStream" uid="uid://0qjr228ogova" path="res://sprites/Celebration Sound Effect.mp3" id="17_ss655"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dgmfv"]

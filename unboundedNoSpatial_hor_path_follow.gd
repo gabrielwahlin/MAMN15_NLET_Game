@@ -92,7 +92,10 @@ func _on_text_submitted(text: String) -> void:
 		var input_number = int(text)
 		if input_number >= 0 and input_number <= 100:
 			target_ratio = round_to((input_number) / 100.0, 2)
-
+			print("Elapsed Time: " + str(elapsed_time_hor) + " seconds")
+			if time_hor_flag != true:
+				thr = elapsed_time_hor
+				time_hor_flag = true
 			line_edit.editable = false
 			value_entered = true
 			is_moving = true  # Start moving after valid input
@@ -119,10 +122,8 @@ func _process(delta: float) -> void:
 			mus.play("new_animation")
 	elif abs(target_ratio - progress_ratio) < 0.05 and value_entered:
 		mus.stop()
-		if time_hor_flag != true:
-			print("Elapsed Time: " + str(elapsed_time_hor) + " seconds")
-			thr = elapsed_time_hor
-			time_hor_flag = true
+		
+			
 			
 		
 	# Check if the target has been reached and update UI accordingly

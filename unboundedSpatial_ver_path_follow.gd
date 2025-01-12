@@ -63,6 +63,9 @@ func _on_text_submitted(text: String) -> void:
 		var input_number = int(text)
 		if input_number >= 0 and input_number <= 100:
 			target_ratio = round_to(input_number / 100.0, 2)
+			if time_ver_flag != true:
+				print("Elapsed Time: " + str(elapsed_time_ver - hor_path_follow.elapsed_time_hor) + " seconds")
+				time_ver_flag = true
 			line_edit.editable = false
 			value_entered = true
 			is_moving = true
@@ -92,9 +95,7 @@ func _process(delta: float) -> void:
 	elif abs(target_ratio - progress_ratio) < 0.05 and value_entered:
 		if not celebration_flag:
 			mus_vert.stop()
-		if time_ver_flag != true:
-			print("Elapsed Time: " + str(elapsed_time_ver - hor_path_follow.elapsed_time_hor - hor_path_follow.elapse_walk_time) + " seconds")
-			time_ver_flag = true
+		
 		
 	# Check if the target has been reached and update UI accordingly
 	if value_entered and not mus_vert.is_playing():
