@@ -469,13 +469,13 @@ texture = ExtResource("9_xxwdj")
 visible = false
 position = Vector2(-221.004, 452.004)
 rotation = -0.00120914
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("9_lpmrk")
 
 [node name="Xost" type="Sprite2D" parent="VerticalPath"]
 position = Vector2(-430, 850)
 rotation = -0.00241828
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("9_lpmrk")
 
 [node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]

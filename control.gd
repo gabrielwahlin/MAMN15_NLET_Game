@@ -10,6 +10,8 @@ func _ready() -> void:
 	#mouse.animation("idle")
 	mouse.play() # Replace with function body.
 	text_anim.play("titleText")
+	AudioPlayer.play_music_level()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -270,8 +270,7 @@ text = "10"
 metadata/_edit_use_anchors_ = true
 
 [node name="EndPointerVer" parent="." instance=ExtResource("5_hdw21")]
-visible = false
-position = Vector2(1367, 44)
+position = Vector2(1367, 804)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
@@ -281,10 +280,9 @@ offset_top = -11.3333
 offset_right = 27.6666
 offset_bottom = 11.6667
 rotation = 4.71239
-text = "100"
+text = "10"
 
 [node name="StartPointerVer" parent="." instance=ExtResource("5_hdw21")]
-visible = false
 position = Vector2(1367, 879)
 rotation = 1.5708
 scale = Vector2(3, 3)
@@ -473,13 +471,13 @@ texture = ExtResource("12_hf6yp")
 visible = false
 position = Vector2(-221.004, 452.004)
 rotation = -0.00120914
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("13_n32ui")
 
 [node name="Xost" type="Sprite2D" parent="VerticalPath"]
 position = Vector2(-430, 850)
 rotation = -0.00241828
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("13_n32ui")
 
 [node name="VerPathFollow" type="PathFollow2D" parent="VerticalPath"]
