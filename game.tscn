@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://4a2jxcsbpc4e"]
+[gd_scene load_steps=39 format=3 uid="uid://4a2jxcsbpc4e"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hslol"]
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_nlpad"]
@@ -16,7 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 [ext_resource type="Texture2D" uid="uid://cq6uuljhyvl8b" path="res://Tallinje.png" id="11_8cyrh"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
-[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="15_c17is"]
+[ext_resource type="PackedScene" uid="uid://dj6ty5bt6ep40" path="res://pause_menu.tscn" id="15_c17is"]
+[ext_resource type="Texture2D" uid="uid://dsvsdamqe8ef2" path="res://sprites/Mus_dancing.png" id="15_khvke"]
 [ext_resource type="AudioStream" uid="uid://0qjr228ogova" path="res://sprites/Celebration Sound Effect.mp3" id="18_rvloi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
@@ -75,6 +76,18 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_33et7"]
+atlas = ExtResource("15_khvke")
+region = Rect2(0, 0, 95, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijt48"]
+atlas = ExtResource("15_khvke")
+region = Rect2(95, 0, 95, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pesa3"]
+atlas = ExtResource("15_khvke")
+region = Rect2(190, 0, 95, 50)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_frh0l"]
 atlas = ExtResource("8_a1t0e")
 region = Rect2(0, 0, 85, 39)
@@ -93,6 +106,20 @@ region = Rect2(160, 0, 160, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dftut"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33et7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijt48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pesa3")
+}],
+"loop": true,
+"name": &"dancing",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 3.0,
 "texture": SubResource("AtlasTexture_frh0l")
@@ -459,7 +486,7 @@ visible = false
 position = Vector2(-65, -42.155)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dftut")
-animation = &"idle"
+animation = &"dancing"
 
 [node name="spikar" type="Node2D" parent="."]
 position = Vector2(623, 894)
