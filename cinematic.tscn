@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://dd61a55x88r6"]
+
+[ext_resource type="Texture2D" uid="uid://cvs2nbpurwm6c" path="res://sprites/Level3_ew.png" id="1_jhkic"]
+[ext_resource type="Texture2D" uid="uid://oceivopgt8mw" path="res://ost.png" id="2_0t13j"]
+[ext_resource type="Script" path="res://mus_ost.gd" id="3_04gu3"]
+[ext_resource type="Texture2D" uid="uid://dkg47fcs5eykc" path="res://Mus_flip.png" id="4_8nix3"]
+[ext_resource type="Texture2D" uid="uid://b6c7wkluotngl" path="res://sprites/Mus_animation.png" id="4_qkdhn"]
+
+[sub_resource type="Curve2D" id="Curve2D_hr8b5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 76, 1031, 0, 0, 0, 0, 1859, 995)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wegig"]
+atlas = ExtResource("4_8nix3")
+region = Rect2(95, 0, 95, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhb06"]
+atlas = ExtResource("4_qkdhn")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6i23"]
+atlas = ExtResource("4_qkdhn")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aoanu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wegig")
+}],
+"loop": true,
+"name": &"flip",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhb06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6i23")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(961.889, 541.5)
+scale = Vector2(12.0111, 12.0111)
+texture = ExtResource("1_jhkic")
+metadata/_edit_lock_ = true
+
+[node name="Ost" type="Sprite2D" parent="."]
+position = Vector2(1022, 983)
+scale = Vector2(4, 4)
+texture = ExtResource("2_0t13j")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-160, 0)
+curve = SubResource("Curve2D_hr8b5")
+
+[node name="musOst" type="PathFollow2D" parent="Path2D"]
+position = Vector2(76, 1031)
+rotation = -0.0201879
+loop = false
+script = ExtResource("3_04gu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/musOst"]
+position = Vector2(-132.173, -50.5507)
+rotation = -0.00340135
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_aoanu")
+animation = &"flip"
