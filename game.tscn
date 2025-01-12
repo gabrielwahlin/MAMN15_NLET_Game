@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bu3qaw34fsl0l" path="res://rep.png" id="9_xxwdj"]
 [ext_resource type="Texture2D" uid="uid://cq6uuljhyvl8b" path="res://Tallinje.png" id="11_8cyrh"]
 [ext_resource type="Texture2D" uid="uid://p5uqhxfv0x64" path="res://spik2.png" id="12_x4iky"]
-[ext_resource type="PackedScene" uid="uid://dj6ty5bt6ep40" path="res://pause_menu.tscn" id="15_c17is"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="15_c17is"]
 [ext_resource type="AudioStream" uid="uid://0qjr228ogova" path="res://sprites/Celebration Sound Effect.mp3" id="18_rvloi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tx2w5"]
@@ -307,6 +307,7 @@ text = "Correct!"
 auto_translate_mode = 1
 position = Vector2i(30, 100)
 size = Vector2i(370, 101)
+visible = true
 
 [node name="Label" type="Label" parent="HorizontalPath/CanvasLayer/Popup"]
 anchors_preset = 10
