@@ -26,6 +26,7 @@ var value_entered: bool = false
 var is_moving: bool = false
 var elapsed_time_ver: float = 0.0
 var time_ver_flag: bool = false
+var celebration_flag: bool = false
 
 # Round function to limit decimals
 func round_to(value: float, decimals: int) -> float:
@@ -77,6 +78,9 @@ func _on_text_submitted(text: String) -> void:
 
 # The main game loop
 func _process(delta: float) -> void:
+	
+	if not play_ani:
+		mus_vert.play("idle")
 	# Smoothly update the progress ratio only when the player input is valid
 	elapsed_time_ver += delta
 	if progress_ratio < target_ratio:
@@ -84,9 +88,10 @@ func _process(delta: float) -> void:
 	# Check if the target has been reached and update UI accordingly
 	if value_entered and (targetnumber_ver - progress_ratio) > 0.01 and not play_ani: 
 			play_ani = true
-			mus_vert.play("idle")
+			mus_vert.play("new_animation")
 	elif abs(target_ratio - progress_ratio) < 0.05 and value_entered:
-		mus_vert.stop()
+		if not celebration_flag:
+			mus_vert.stop()
 		if time_ver_flag != true:
 			print("Elapsed Time: " + str(elapsed_time_ver - hor_path_follow.elapsed_time_hor - hor_path_follow.elapse_walk_time) + " seconds")
 			time_ver_flag = true
@@ -96,6 +101,8 @@ func _process(delta: float) -> void:
 		if abs(targetnumber_ver - target_ratio) <= 0.051:
 			if not celebration.is_playing():
 				celebration.play()
+			mus_vert.play("dancing")
+			celebration_flag = true
 			correct_ver()
 			popup_panel.visible = false
 			is_moving = false
@@ -112,15 +119,6 @@ func _process(delta: float) -> void:
 		#is_moving = false
 		if popup_panel != null and popup_panel.visible:
 			popup_panel.visible = false
-
-	# Vertical animation logic
-	if vertical_path.visible:  # Check if we're on the vertical path
-		if abs(progress_ratio - target_ratio) > 0.01:  # If moving vertically
-			if not mus_vert.is_playing():
-				mus_vert.play("new_animation")
-		else:
-			mus_vert.stop()  # Stop the vertical animation when the target is reached
-
 # Function to handle the correct vertical path condition
 func correct_ver():
 	win_label.visible = true
