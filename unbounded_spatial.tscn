@@ -346,8 +346,9 @@ text = "Correct!"
 
 [node name="Popup" type="Popup" parent="HorizontalPath/CanvasLayer"]
 auto_translate_mode = 1
-position = Vector2i(30, 100)
-size = Vector2i(370, 101)
+position = Vector2i(810, 200)
+size = Vector2i(400, 110)
+visible = true
 
 [node name="Label" type="Label" parent="HorizontalPath/CanvasLayer/Popup"]
 anchors_preset = 10
@@ -398,8 +399,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WinPopup" type="Popup" parent="VerticalPath/CanvasLayer2"]
 auto_translate_mode = 1
-position = Vector2i(30, 100)
-size = Vector2i(370, 101)
+position = Vector2i(800, 200)
+size = Vector2i(400, 110)
 visible = true
 
 [node name="Button" type="Button" parent="VerticalPath/CanvasLayer2/WinPopup"]
@@ -428,8 +429,8 @@ horizontal_alignment = 1
 
 [node name="Popup" type="Popup" parent="VerticalPath/CanvasLayer2"]
 auto_translate_mode = 1
-position = Vector2i(30, 100)
-size = Vector2i(370, 101)
+position = Vector2i(800, 200)
+size = Vector2i(400, 110)
 visible = true
 
 [node name="Label" type="Label" parent="VerticalPath/CanvasLayer2/Popup"]

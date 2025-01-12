@@ -1,10 +1,12 @@
-[gd_scene load_steps=39 format=3 uid="uid://cpeaun7fohqjn"]
+[gd_scene load_steps=41 format=3 uid="uid://cpeaun7fohqjn"]
 
 [ext_resource type="Script" path="res://Main_unbounded_no_spatial.gd" id="1_3l10t"]
 [ext_resource type="Texture2D" uid="uid://l1lky100w26u" path="res://Level2_no_assets_1080E.png" id="1_m1hdv"]
 [ext_resource type="PackedScene" uid="uid://brxqcp68keyih" path="res://scenes/test_level.tscn" id="2_rhrnc"]
+[ext_resource type="Texture2D" uid="uid://d77j7qtscl7e" path="res://sprites/bokhylla_new.png" id="3_0keey"]
 [ext_resource type="PackedScene" uid="uid://dkr2q1534hi11" path="res://player.tscn" id="3_4sqea"]
 [ext_resource type="PackedScene" uid="uid://htigydw3xql0" path="res://scenes/pointer.tscn" id="4_7s3c8"]
+[ext_resource type="Texture2D" uid="uid://2w3k3ht7yra" path="res://sprites/fönster.png" id="4_k1kuh"]
 [ext_resource type="Texture2D" uid="uid://dk6mf8j8cn1nc" path="res://Mus.png" id="6_7iyf1"]
 [ext_resource type="Script" path="res://unboundedNoSpatial_hor_path_follow.gd" id="6_pajwb"]
 [ext_resource type="Texture2D" uid="uid://cnbvtcu4uhn1i" path="res://sprites/Mus_Idle_anim.png" id="7_xj1kw"]
@@ -212,6 +214,16 @@ scale = Vector2(1, 1.4)
 texture = ExtResource("1_m1hdv")
 metadata/_edit_lock_ = true
 
+[node name="Bokhylla" type="Sprite2D" parent="."]
+position = Vector2(1683, 653)
+scale = Vector2(10, 10)
+texture = ExtResource("3_0keey")
+
+[node name="Fönster" type="Sprite2D" parent="."]
+position = Vector2(476, 353)
+scale = Vector2(10, 10)
+texture = ExtResource("4_k1kuh")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
@@ -315,10 +327,11 @@ animation = &"idle"
 [node name="CanvasLayer" type="CanvasLayer" parent="HorizontalPath"]
 
 [node name="LineEdit" type="LineEdit" parent="HorizontalPath/CanvasLayer"]
-offset_left = 75.0
-offset_top = 243.0
-offset_right = 355.0
-offset_bottom = 333.0
+offset_left = 779.0
+offset_top = 400.0
+offset_right = 1059.0
+offset_bottom = 490.0
+scale = Vector2(1.5, 1.5)
 placeholder_text = "Skriv ett nummer mellan 0 och 100"
 alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -333,8 +346,8 @@ text = "Correct!"
 
 [node name="Popup" type="Popup" parent="HorizontalPath/CanvasLayer"]
 auto_translate_mode = 1
-position = Vector2i(30, 100)
-size = Vector2i(370, 101)
+position = Vector2i(800, 200)
+size = Vector2i(400, 110)
 
 [node name="Label" type="Label" parent="HorizontalPath/CanvasLayer/Popup"]
 anchors_preset = 10
@@ -374,18 +387,19 @@ curve = SubResource("Curve2D_djkw2")
 
 [node name="LineEdit" type="LineEdit" parent="VerticalPath/CanvasLayer2"]
 visible = false
-offset_left = 75.0
-offset_top = 243.0
-offset_right = 355.0
-offset_bottom = 333.0
+offset_left = 799.0
+offset_top = 400.0
+offset_right = 1079.0
+offset_bottom = 490.0
+scale = Vector2(1.5, 1.5)
 placeholder_text = "Skriv ett nummer mellan 0 och 100"
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="WinPopup" type="Popup" parent="VerticalPath/CanvasLayer2"]
 auto_translate_mode = 1
-position = Vector2i(30, 100)
-size = Vector2i(370, 101)
+position = Vector2i(800, 200)
+size = Vector2i(400, 110)
 visible = true
 
 [node name="Button" type="Button" parent="VerticalPath/CanvasLayer2/WinPopup"]
@@ -414,8 +428,8 @@ horizontal_alignment = 1
 
 [node name="Popup" type="Popup" parent="VerticalPath/CanvasLayer2"]
 auto_translate_mode = 1
-position = Vector2i(30, 100)
-size = Vector2i(370, 101)
+position = Vector2i(800, 200)
+size = Vector2i(400, 110)
 visible = true
 
 [node name="Label" type="Label" parent="VerticalPath/CanvasLayer2/Popup"]
