@@ -29,7 +29,7 @@ extends PathFollow2D
 @onready var celebration = $"../../celebr"
 
 var target_ratio: float = 0.0
-var smooth_speed: float = 1.0
+var smooth_speed: float = 0.5
 var rng = RandomNumberGenerator.new()
 var targetnumber_hor: float = 0.0
 var targetnumber_ver: float = 0.0

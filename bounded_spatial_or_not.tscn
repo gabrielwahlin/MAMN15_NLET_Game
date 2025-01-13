@@ -221,6 +221,7 @@ texture = ExtResource("4_4if28")
 z_index = -1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_1nry8")
+layout_mode = 0
 offset_left = -633.0
 offset_top = -1.0
 offset_right = 11250.0

@@ -271,6 +271,7 @@ text = "10"
 metadata/_edit_use_anchors_ = true
 
 [node name="EndPointerVer" parent="." instance=ExtResource("4_7s3c8")]
+visible = false
 position = Vector2(1367, 804)
 rotation = 1.5708
 scale = Vector2(3, 3)
@@ -284,6 +285,7 @@ rotation = 4.71239
 text = "10"
 
 [node name="StartPointerVer" parent="." instance=ExtResource("4_7s3c8")]
+visible = false
 position = Vector2(1367, 879)
 rotation = 1.5708
 scale = Vector2(3, 3)

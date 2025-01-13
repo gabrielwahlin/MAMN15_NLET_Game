@@ -4,7 +4,7 @@ extends PathFollow2D
 @onready var win_label = $"../CanvasLayer/Label"    # Adjust the path to the Label node
 
 var target_ratio: float = 0.0
-var smooth_speed: float = 1.0
+var smooth_speed: float = 0.5
 var rng = RandomNumberGenerator.new()
 var targetnumber: float = 0.0  # Declare targetnumber as a member variable
 
